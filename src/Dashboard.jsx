@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import './index.css'
+import Navbar from "./Navbar";
+
+
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -16,6 +19,7 @@ const SearchBar = () => {
   );
 
   return (
+  <div className="dashboard">
     <div className="search-bar">
       <input
         type="text"
@@ -29,11 +33,14 @@ const SearchBar = () => {
         ))}
       </ul>
     </div>
+
+    <div><Navbar/></div>
+  </div>
+    
+  
   );
 };
 
+
 export default SearchBar;
 
-<style>
-  /* Paste the CSS code here */
-</style>
