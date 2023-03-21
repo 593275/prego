@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import "../css/index.css";
 import Navbar from "./Navbar";
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
+  let land = "";
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [items, setItems] = useState([
-    "apple",
-    "banana",
-    "orange",
-    "pineapple",
-    "watermelon",
+    "Aruba",
+    "Norge",
+    "Sverige",
+    "Finland",
+    "Tyskalnd",
   ]);
 
   const filteredItems = items.filter((item) =>
@@ -22,8 +25,15 @@ const SearchBar = () => {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      console.log(query);
+      land = query
+      console.log(land)
     }
+
+      if(land === "Aruba") {
+        navigate("/Aruba")
+      }
+
+    
   };
 
   return (
