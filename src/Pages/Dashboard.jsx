@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import '../css/index.css'
+import "../css/index.css";
 import Navbar from "./Navbar";
-
-
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -18,29 +16,40 @@ const SearchBar = () => {
     item.toLowerCase().includes(query.toLowerCase())
   );
 
-  return (
-  <div className="dashboard">
-    <div className="search-bar">
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for items..."
-      />
-      <ul>
-        {filteredItems.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    </div>
+  const handleItemClick = (item) => {
+    setQuery(item);
+  };
 
-    <div><Navbar/></div>
-  </div>
-    
-  
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      console.log(query);
+    }
+  };
+
+  return (
+    <div className="dashboard">
+      <div className="search-bar">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyPress}
+          placeholder="Search for items..."
+        />
+        <ul>
+          {filteredItems.map((item) => (
+            <li key={item} onClick={() => handleItemClick(item)}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <Navbar />
+      </div>
+    </div>
   );
 };
 
-
 export default SearchBar;
-
