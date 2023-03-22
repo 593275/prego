@@ -11,35 +11,56 @@ div {
   .Inntektsgruppe {
     display: block;
     border-bottom: 1px solid #ccc;
-    width: 300px;
+    width: 500px;
     margin: 0 auto; 
     text-align: left;
-    transform: translate(300);
+    transform: translate(100px, 0px);
   }
 
   .InntektsgruppeTekst {
     display: block;
     margin: 0 auto; 
-    width: 300px;
+    width: 360px;
     text-align: right;
-    transform: translate(-10px, -19px);
+    transform: translate(170px, -19px);
     
   }
 
   .Region {
     display: block;
     border-bottom: 1px solid #ccc;
-    width: 300px;
+    width: 600px;
     margin: 0 auto; 
     text-align: left;
-    transform: translate(300, 20);
+    transform: translate(100px, 0px);
 
   }
 
   .RegionTekst {
     display: block;
     margin: 0 auto; 
-    width: 300px;
+    width: 430px;
     text-align: right;
-    transform: translate(-10px, -19px);
+    transform: translate(135px, -19px);
+  }
+
+  .Beskrivelse {
+
+    display: block;
+    width: 500px;
+    height: 300px;
+    margin: 0 auto; 
+    text-align: left;
+    transform: translate(100px, 0px);
+
+  }
+
+  .BeskrivelseTekst {
+    display: block;
+    border-style: solid;
+    margin: 0 auto; 
+    width: 400px;
+    height: 400px;
+    text-align: left;
+    transform: translate(150px, -296px);
   }
