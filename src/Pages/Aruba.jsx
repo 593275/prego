@@ -1,10 +1,15 @@
 import React from "react";
 import Navbar from "./Navbar";
+import "../css/Aruba.css";
 
 const Aruba = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1 style={{ display: "inline-block" }}>Aruba </h1>
+    <div>
+      <h2 className="Land">Aruba</h2>
+      <h3 className="Inntektsgruppe">Inntektsgruppe:</h3>
+      <p className="InntektsgruppeTekst">Høyinntekstsland</p>
+      <h3 className="Region">Region:</h3>
+      <p className="RegionTekst">Latin America & Caribbean</p>
       <Navbar />
     </div>
   );

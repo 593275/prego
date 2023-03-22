@@ -1,0 +1,45 @@
+div {
+    text-align: center;
+
+  }
+  
+  .Land {
+    display: block;
+    transform: translate(-120px);
+  }
+  
+  .Inntektsgruppe {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    width: 300px;
+    margin: 0 auto; 
+    text-align: left;
+    transform: translate(300);
+  }
+
+  .InntektsgruppeTekst {
+    display: block;
+    margin: 0 auto; 
+    width: 300px;
+    text-align: right;
+    transform: translate(-10px, -19px);
+    
+  }
+
+  .Region {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    width: 300px;
+    margin: 0 auto; 
+    text-align: left;
+    transform: translate(300, 20);
+
+  }
+
+  .RegionTekst {
+    display: block;
+    margin: 0 auto; 
+    width: 300px;
+    text-align: right;
+    transform: translate(-10px, -19px);
+  }
