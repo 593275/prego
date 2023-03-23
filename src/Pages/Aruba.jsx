@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import "../css/Aruba.css";
+import myImage from "../Bilder/Flag_of_Aruba.svg.png"
 
 const Aruba = () => {
   return (
@@ -20,6 +21,7 @@ const Aruba = () => {
       <div className="circle green"></div>
       <div className="circle orange"></div>
     </div>
+      <img className="Bilde" src={myImage} alt="My Image" />
       <Navbar />
       
     </div>

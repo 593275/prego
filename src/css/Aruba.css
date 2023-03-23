@@ -5,7 +5,7 @@ div {
   
   .Land {
     display: block;
-    transform: translate(-120px);
+    transform: translate(-170px);
   }
   
   .Inntektsgruppe {
@@ -58,12 +58,17 @@ div {
 
   .BeskrivelseTekst {
     display: block;
-    
     margin: 0 auto; 
     width: 500px;
     height: 300px;
     text-align: left;
     transform: translate(150px, -296px);
+  }
+
+  .Bilde {
+    width: 400px;
+    height: 200px;
+    transform: translate(610px, -680px);
   }
 
   .circles-container {
