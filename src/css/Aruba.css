@@ -11,7 +11,7 @@ div {
   .Inntektsgruppe {
     display: block;
     border-bottom: 1px solid #ccc;
-    width: 500px;
+    width: 600px;
     margin: 0 auto; 
     text-align: left;
     transform: translate(100px, 0px);
@@ -20,7 +20,7 @@ div {
   .InntektsgruppeTekst {
     display: block;
     margin: 0 auto; 
-    width: 360px;
+    width: 460px;
     text-align: right;
     transform: translate(170px, -19px);
     
@@ -38,16 +38,18 @@ div {
 
   .RegionTekst {
     display: block;
+   border-style: solid;
     margin: 0 auto; 
-    width: 430px;
+    width: 520px;
     text-align: right;
-    transform: translate(135px, -19px);
+    transform: translate(140px, -19px);
   }
 
   .Beskrivelse {
 
     display: block;
-    width: 500px;
+    
+    width: 600px;
     height: 300px;
     margin: 0 auto; 
     text-align: left;
@@ -57,10 +59,10 @@ div {
 
   .BeskrivelseTekst {
     display: block;
-    border-style: solid;
+    
     margin: 0 auto; 
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 300px;
     text-align: left;
     transform: translate(150px, -296px);
   }

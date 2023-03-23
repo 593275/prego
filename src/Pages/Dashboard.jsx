@@ -12,7 +12,7 @@ const SearchBar = () => {
     "Norge",
     "Sverige",
     "Finland",
-    "Tyskalnd",
+    "Tyskland",
   ]);
 
   const filteredItems = items.filter((item) =>
