@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from "../config/firebase-config"
-import { getDoc, doc, collection, onSnapshot } from "firebase/firestore";
+import { auth } from "../config/firebase-config"
+import { signInWithEmailAndPassword } from "firebase/auth";
 import "../css/loginForm.css"
+import { useFetchUsers } from '../Functions/functions';
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState([])
+  const users = useFetchUsers()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
 
-  useEffect(
-    () => 
-      onSnapshot(collection(db, "Users"), (snapshot) => 
-        setUsers(snapshot.docs.map(doc => ({...doc.data()})))
-      ),
-    []
-    );
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
       e.preventDefault();
-     console.log(users)
-      const user = users.find((u) => u.Username === username && u.Password === password);
-      if (user) {
-        if (user.username === "admin") {
-          navigate("/admin/dashboard");
+      try {
+        await signInWithEmailAndPassword(auth, username + "@prego.com", password);
+        const user = auth.currentUser;
+        console.log(user.uid)
+        if(user.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2") {
+          navigate("/adminDashboard")
         } else {
-          navigate("/dashboard");
+          navigate("/dashboard")
         }
-      } else {
-        setError("Invalid username or password");
+      } catch(error) {
+        setError("Ugylding brukernavn eller passord")
       }
+
+      
+        
+       
     };
 
   return (
