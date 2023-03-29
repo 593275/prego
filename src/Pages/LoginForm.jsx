@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from "../config/firebase-config"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import "../css/loginForm.css"
-import { useFetchUsers } from '../Functions/functions';
+
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const users = useFetchUsers()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
