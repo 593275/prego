@@ -39,7 +39,6 @@ const Aruba = () => {
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <div className="circles-container">
-<<<<<<< HEAD
         <div className="circle red" onClick={handleCircleClickRed}></div>
         <div className="circle green" onClick={handleCircleClickGreen}></div>
         <div className="circle orange" onClick={handleCircleClickOrange}></div>
@@ -68,12 +67,6 @@ const Aruba = () => {
           </div>
         </div>
       )}
-=======
-        <div className="circle red"></div>
-        <div className="circle green"></div>
-        <div className="circle orange"></div>
-      </div>
->>>>>>> d462a85e1d7e33450ea8f1c16f9cb9e5b7e7734a
       <img className="Bilde" src={myImage} alt="My Image" />
       <Navbar />
     </div>
