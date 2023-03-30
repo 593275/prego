@@ -5,8 +5,9 @@ const AndreFaktorer = () => {
     return (
 
         <div style={{ textAlign: "center" }}>
-            <h1 style={{ display: "inline-block" }}>Andre faktorer</h1>
+            <h1 style={{ display: "inline-block" }}>Migrasjonsrelaterte faktorer</h1>
             <Navbar/>
+            
         </div>
 
     )
