@@ -1,23 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/index.css";
 import Navbar from "./Navbar";
+import { db } from "../config/firebase-config"
 import { useNavigate } from 'react-router-dom';
+import { collection, query, doc, getDocs } from "firebase/firestore"; 
+import { landDb } from "../Functions/function";
 
-const SearchBar = () => {
+const SearchBar =  () => {
   let land = "";
   const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-  const [items, setItems] = useState([
-    "Aruba",
-    "Norge",
-    "Sverige",
-    "Finland",
-    "Tyskland",
-  ]);
+  let filteredItems = ""
+  let arrayItems =""
+  const landCollectionRef = collection(db, "Land");
+  const [query, setQuery] = useState(""); 
+  const [items, setItems] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
 
-  const filteredItems = items.filter((item) =>
-    item.toLowerCase().includes(query.toLowerCase())
-  );
+  useEffect(() => {
+    const getLand = async () => {
+      const data = await getDocs(landCollectionRef);
+      setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setIsLoading(false);
+    };
+
+    getLand();
+  }, []);
+
+
+
+  if (isLoading === false) {
+    console.log(items)
+    filteredItems = items.filter((item) =>
+    item.Land.toLowerCase().includes(query.toLowerCase()));
+    
+    filteredItems.sort((a, b) => {
+      if (a.Land < b.Land) {
+        return -1;
+      }
+      if (a.Land > b.Land) {
+        return 1;
+      }
+      return 0;
+    }); 
+  }
+    
+
 
   const handleItemClick = (item) => {
     setQuery(item);
@@ -47,9 +74,9 @@ const SearchBar = () => {
           placeholder="Search for items..."
         />
         <ul>
-          {filteredItems.map((item) => (
-            <li key={item} onClick={() => handleItemClick(item)}>
-              {item}
+          {filteredItems && filteredItems.slice(0, 5).map((item) => (
+            <li key={item.id} onClick={() => handleItemClick(item.Land)}>
+              {item.Land}
             </li>
           ))}
         </ul>

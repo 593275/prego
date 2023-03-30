@@ -4,7 +4,6 @@ import { auth } from "../config/firebase-config"
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import "../css/loginForm.css"
 
-
 const LoginForm = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -35,6 +34,7 @@ const LoginForm = () => {
       } catch(error) {
         setError("Ugylding brukernavn eller passord")
       }
+
 
       
         
