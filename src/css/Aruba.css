@@ -5,7 +5,7 @@ div {
   
   .Land {
     display: block;
-    transform: translate(-170px);
+    transform: translate(-220px);
   }
   
   .Inntektsgruppe {
@@ -14,7 +14,7 @@ div {
     width: 600px;
     margin: 0 auto; 
     text-align: left;
-    transform: translate(100px, 0px);
+    transform: translate(50px, 0px);
   }
 
   .InntektsgruppeTekst {
@@ -22,7 +22,7 @@ div {
     margin: 0 auto; 
     width: 460px;
     text-align: right;
-    transform: translate(170px, -19px);
+    transform: translate(120px, -19px);
     
   }
 
@@ -32,7 +32,7 @@ div {
     width: 600px;
     margin: 0 auto; 
     text-align: left;
-    transform: translate(100px, 0px);
+    transform: translate(50px, 0px);
 
   }
 
@@ -41,7 +41,7 @@ div {
     margin: 0 auto; 
     width: 520px;
     text-align: right;
-    transform: translate(140px, -19px);
+    transform: translate(90px, -19px);
   }
 
   .Beskrivelse {
@@ -52,7 +52,7 @@ div {
     height: 300px;
     margin: 0 auto; 
     text-align: left;
-    transform: translate(100px, 0px);
+    transform: translate(50px, 0px);
 
   }
 
@@ -62,19 +62,19 @@ div {
     width: 500px;
     height: 300px;
     text-align: left;
-    transform: translate(150px, -296px);
+    transform: translate(110px, -296px);
   }
 
   .Bilde {
     width: 400px;
     height: 200px;
-    transform: translate(610px, -680px);
+    transform: translate(560px, -680px);
   }
 
   .circles-container {
     display: flex;
     justify-content: center;
-    transform: translate(100px, -296px);
+    transform: translate(50px, -296px);
     
   }
   

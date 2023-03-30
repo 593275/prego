@@ -1,20 +1,45 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth } from "../config/firebase-config"
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import "../css/loginForm.css"
+
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    console.log("hei")
+  if(auth.currentUser != null) {
+    signOut(auth).then(() => {
+
+    }).catch((error) => {
+      setError("Feil ved logg ut")
+    });
+  }
+
+
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        await signInWithEmailAndPassword(auth, username + "@prego.com", password);
+        const user = auth.currentUser;
+        console.log(user.uid)
+        if(user.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2") {
+          navigate("/adminDashboard")
+        } else {
+          navigate("/dashboard")
+        }
+      } catch(error) {
+        setError("Ugylding brukernavn eller passord")
+      }
+
       
-    navigate("/dashboard");
-    
-  };
+        
+       
+    };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -26,6 +51,7 @@ const LoginForm = () => {
         <label htmlFor="password">Password: </label>
         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
+      {error && <p>{error}</p>}
       <button type="submit">Submit</button>
     </form>
   );
