@@ -56,7 +56,7 @@ const SearchBar =  () => {
       console.log(land)
     }
 
-      if(land === "Aruba") {
+      if(land === "Somalia") {
         navigate("/Aruba")
       }
 
