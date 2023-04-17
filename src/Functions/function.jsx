@@ -22,10 +22,11 @@ export const PrivateRoutes = () => {
 }
 
 
-export const adminRoutes = () => {
+export const AdminRoutes = () => {
     const user = auth.currentUser;
     return(
-        auth && user.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2" ? <Outlet/> : <Navigate to="/"/>
+      
+        auth && user?.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2" ? <Outlet/> : <Navigate to="/"/>
     )
 }
 

@@ -31,13 +31,13 @@ const SearchBar =  () => {
   if (isLoading === false) {
     console.log(items)
     filteredItems = items.filter((item) =>
-    item.Land.toLowerCase().includes(query.toLowerCase()));
+    item.ctry.toLowerCase().includes(query.toLowerCase()));
     
     filteredItems.sort((a, b) => {
-      if (a.Land < b.Land) {
+      if (a.ctry < b.ctry) {
         return -1;
       }
-      if (a.Land > b.Land) {
+      if (a.ctry > b.ctry) {
         return 1;
       }
       return 0;
@@ -53,14 +53,13 @@ const SearchBar =  () => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       land = query
+      localStorage.setItem('userInput', query);
       console.log(land)
     }
 
-      if(land === "Somalia") {
-        navigate("/Aruba")
-      }
+    navigate("/Aruba")
+      
 
-    
   };
 
   return (
@@ -75,8 +74,8 @@ const SearchBar =  () => {
         />
         <ul>
           {filteredItems && filteredItems.slice(0, 5).map((item) => (
-            <li key={item.id} onClick={() => handleItemClick(item.Land)}>
-              {item.Land}
+            <li key={item.id} onClick={() => handleItemClick(item.ctry)}>
+              {item.ctry}
             </li>
           ))}
         </ul>

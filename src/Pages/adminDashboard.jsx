@@ -13,6 +13,7 @@ import { landDb } from "../Functions/function"
   const handleFileUpload =  async (e) => {
     const file = e.target.files[0];
     Papa.parse(file, {
+      encoding: "ISO-8859-1",
       complete: async (results) => {
         const items = results.data.map((item) => {
           return {
@@ -40,7 +41,7 @@ import { landDb } from "../Functions/function"
           if(docSnap.exists()) {
             console.log("1")
             await updateDoc(docRef, {
-              Land: item.ctry,
+              ctry: item.ctry,
               N: item.N,
               n_sb: item.n_sb,
               pct_sb: item.pct_sb,
@@ -59,7 +60,7 @@ import { landDb } from "../Functions/function"
             setError("Et eller flere land i filen ekstisterer allerede i databasen og vil bli oppdatert")
           } else {
             await setDoc(doc(db, "Land", item.ctry), {
-              Land: item.ctry,
+              ctry: item.ctry,
               N: item.N,
               n_sb: item.n_sb,
               pct_sb: item.pct_sb,
