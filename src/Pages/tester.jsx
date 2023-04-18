@@ -1,48 +1,105 @@
-import React from 'react';
-import Papa from 'papaparse';
+import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
+import "../css/Aruba.css";
+import myImage from "../Bilder/Flag_of_Aruba.svg.png"
+import { collection, query, doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../config/firebase-config" 
 
-function CsvReader() {
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-
-    Papa.parse(file, {
-      encoding: "utf-8",
-      delimiter: ";",
-      complete: (results) => {
-        const items = results.data.slice(1)
-  .filter((item) => item.length === 15) // filter out invalid items
-  .map((item) => {
-    return {
-      ctry: item[0],
-      N: parseInt(item[1]),
-      n_sb: parseInt(item[2]),
-      pct_sb: parseFloat(item[3].replace(",", ".")),
-      n_lbw: parseInt(item[4]),
-      pct_lbw: parseFloat(item[5].replace(",", ".")),
-      n_pet: parseInt(item[6]),
-      pct_pet: parseFloat(item[7].replace(",", ".")),
-      n_gdm: parseInt(item[8]),
-      pct_gdm: parseFloat(item[9].replace(",", ".")),
-      n_cs: parseInt(item[10]),
-      pct_cs: parseFloat(item[11].replace(",", ".")),
-      n_fa: parseInt(item[12]),
-      pct_fa: parseFloat(item[13].replace(",", ".")),
-      gbd: item[14],
-    };
+const Aruba = () => {
+  const [items, setItems] = useState([])
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedData, setEditedData] = useState({
+    
+    gbd: '',
+ 
   });
+
+  const getLand = async () => {
+    const land = "Norge"
+    const docRef = doc(db, "Land", land)
+    const docSnap = await getDoc(docRef)
+    setItems(docSnap.data());
+  };
   
-  for(const item of items) {
-    console.log(item.N)
-  }
-      },
+  useEffect(() => {
+    getLand();
+  }, []);
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+    setEditedData({
+    
+      gbd: items.gbd,
+    
+    });
+  };
+
+  const handleSaveClick = async () => {
+    const docRef = doc(db, "Land", "Norge");
+    await updateDoc(docRef, editedData);
+    getLand();
+    setIsEditing(false);
+  };
+
+  const handleCancelClick = () => {
+    setIsEditing(false);
+    setEditedData({
+      
+      gbd: items.gbd,
+     
     });
   };
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
+      <h2 className="Land">{items.ctry}</h2>
+      <h3 className="Inntektsgruppe">Inntektsgruppe:</h3>
+      {isEditing ? (
+        <input
+          type="text"
+          value={editedData.inntekt}
+          onChange={(e) =>
+            setEditedData({ ...editedData, inntekt: e.target.value })
+          }
+        />
+      ) : (
+        <p className="InntektsgruppeTekst">{items.inntekt}</p>
+      )}
+      <h3 className="Region">Region:</h3>
+      {isEditing ? (
+        <input
+          type="text"
+          value={editedData.gbd}
+          onChange={(e) =>
+            setEditedData({ ...editedData, gbd: e.target.value })
+          }
+        />
+      ) : (
+        <p className="RegionTekst">{items.gbd}</p>
+      )}
+      <h3 className="Beskrivelse">Beskrivelse</h3>
+      {isEditing ? (
+        <textarea
+          value={editedData.beskrivelse}
+          onChange={(e) =>
+            setEditedData({ ...editedData, beskrivelse: e.target.value })
+          }
+        />
+      ) : (
+        <p className="BeskrivelseTekst">{items.beskrivelse}</p>
+      )}
+      {isEditing ? (
+        <>
+          <button onClick={handleSaveClick}>Save</button>
+          <button onClick={handleCancelClick}>Cancel</button>
+        </>
+      ) : (
+        <button onClick={handleEditClick}>Edit</button>
+      )}
+      <img className="Bilde" src={myImage} alt="My Image" />
+      <Navbar />
     </div>
   );
-}
+};
 
-export default CsvReader;
+export default Aruba;

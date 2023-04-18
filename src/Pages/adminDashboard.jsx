@@ -3,6 +3,7 @@ import Papa from "papaparse";
 import { db } from "../config/firebase-config"
 import { setDoc, updateDoc, doc, getDoc } from "firebase/firestore"; 
 import { landDb } from "../Functions/function"
+import SearchBar from "./Dashboard";
 
  function App() {
   const [data, setData] = React.useState(null);
@@ -91,6 +92,8 @@ import { landDb } from "../Functions/function"
 
   return (
     <div>
+      <SearchBar/> <br/>
+      <p3>Legg in en CSV fil</p3><br/>
       <input type="file" onChange={handleFileUpload} />
       {error && <p>{error}</p>}
     </div>
