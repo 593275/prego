@@ -4,6 +4,11 @@ import { auth } from "../config/firebase-config"
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import "../css/loginForm.css"
 
+/**bruker liste
+ * Bruker Hei123
+ * admin PreGo123
+ */
+
 const LoginForm = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');

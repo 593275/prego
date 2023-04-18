@@ -22,7 +22,6 @@ form {
   button {
     padding: 0.5rem;
     margin-top: 1rem;
-    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 0.25rem;
@@ -31,5 +30,6 @@ form {
   }
   
   button:hover {
-    background-color: #0069d9;
+    background-color: #000000;
   }
+

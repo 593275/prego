@@ -5,6 +5,8 @@ import myImage from "../Bilder/Flag_of_Aruba.svg.png"
 import { collection, query, doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
 
+
+
 const Aruba = () => {
   const [modalOpenRed, setModalOpenRed] = useState(false);
   const [modalOpenGreen, setModalOpenGreen] = useState(false);
