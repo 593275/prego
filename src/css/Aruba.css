@@ -26,6 +26,16 @@ div {
     
   }
 
+  #InntektsgruppeEdit {
+    display: block;
+    margin: 0 auto; 
+    height: 1px;
+    width: 460px;
+    text-align: right;
+    transform: translate(180px, -19px);
+  }
+  
+
   .Region {
     display: block;
     border-bottom: 1px solid #ccc;
@@ -39,9 +49,18 @@ div {
   .RegionTekst {
     display: block;
     margin: 0 auto; 
-    width: 520px;
+    width: 27%;
     text-align: right;
     transform: translate(90px, -19px);
+  }
+
+  #RegionTekstEdit {
+    display: block;
+    margin: 0 auto;
+    height: 1px;
+    border: 1px solid #ccc;
+    text-align: right;
+    transform: translate(180px, -19px);
   }
 
   .Beskrivelse {
@@ -62,8 +81,19 @@ div {
     width: 500px;
     height: 300px;
     text-align: left;
-    transform: translate(110px, -296px);
+    transform: translate(100px, -296px);
   }
+
+  #BeskrivelseEdit {
+    display: block;
+    margin: 0 auto; 
+    width: 480px;
+    height: 300px;
+    text-align: left;
+    padding: 10px;
+    transform: translate(100px, -296px);
+  }
+  
 
   .Bilde {
     width: 400px;
@@ -134,6 +164,8 @@ div {
   .modal-box button {
     margin-top: 10px;
   }
+
+  
 
 
   

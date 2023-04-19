@@ -9,9 +9,9 @@ const Aruba = () => {
   const [items, setItems] = useState([])
   const [isEditing, setIsEditing] = useState(false);
   const [editedData, setEditedData] = useState({
-    
-    gbd: '',
- 
+    Inntektsgruppe: "",
+    gbd: "",
+    beskrivelse: "",
   });
 
   const getLand = async () => {
@@ -28,9 +28,9 @@ const Aruba = () => {
   const handleEditClick = () => {
     setIsEditing(true);
     setEditedData({
-    
+      Inntektsgruppe: items.Inntektsgruppe,
       gbd: items.gbd,
-    
+      beskrivelse: items.beskrivelse,
     });
   };
 
@@ -44,8 +44,9 @@ const Aruba = () => {
   const handleCancelClick = () => {
     setIsEditing(false);
     setEditedData({
-      
+      Inntektsgruppe: items.Inntektsgruppe,
       gbd: items.gbd,
+      beskrivelse: items.beskrivelse,
      
     });
   };
@@ -55,19 +56,19 @@ const Aruba = () => {
       <h2 className="Land">{items.ctry}</h2>
       <h3 className="Inntektsgruppe">Inntektsgruppe:</h3>
       {isEditing ? (
-        <input
+        <input id="InntektsgruppeEdit"
           type="text"
-          value={editedData.inntekt}
+          value={editedData.Inntektsgruppe}
           onChange={(e) =>
-            setEditedData({ ...editedData, inntekt: e.target.value })
+            setEditedData({ ...editedData, Inntektsgruppe: e.target.value })
           }
         />
       ) : (
-        <p className="InntektsgruppeTekst">{items.inntekt}</p>
+        <p className="InntektsgruppeTekst">{items.Inntektsgruppe}</p>
       )}
       <h3 className="Region">Region:</h3>
       {isEditing ? (
-        <input
+        <input id="RegionTekstEdit"
           type="text"
           value={editedData.gbd}
           onChange={(e) =>
@@ -77,14 +78,14 @@ const Aruba = () => {
       ) : (
         <p className="RegionTekst">{items.gbd}</p>
       )}
-      <h3 className="Beskrivelse">Beskrivelse</h3>
+      <h3 className="Beskrivelse">Beskrivelse: </h3>
       {isEditing ? (
-        <textarea
-          value={editedData.beskrivelse}
-          onChange={(e) =>
-            setEditedData({ ...editedData, beskrivelse: e.target.value })
-          }
-        />
+         <textarea id ="BeskrivelseEdit" 
+         value={editedData.beskrivelse}
+         onChange={(e) =>
+           setEditedData({ ...editedData, beskrivelse: e.target.value })
+         }
+       />
       ) : (
         <p className="BeskrivelseTekst">{items.beskrivelse}</p>
       )}
@@ -96,7 +97,7 @@ const Aruba = () => {
       ) : (
         <button onClick={handleEditClick}>Edit</button>
       )}
-      <img className="Bilde" src={myImage} alt="My Image" />
+     
       <Navbar />
     </div>
   );
