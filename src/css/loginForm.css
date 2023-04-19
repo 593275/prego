@@ -29,7 +29,8 @@ form {
     transition: all 0.2s ease-in-out;
   }
   
-  button:hover {
-    background-color: #000000;
+  button.something:hover {
+    background-color: blue;
+    
   }
 

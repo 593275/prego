@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import "../css/Andrefaktorer.css";
 
 
 const AndreFaktorer = () => {
@@ -53,18 +52,18 @@ const AndreFaktorer = () => {
               <h3>{question.question}</h3>
               <p>{question.description}</p>
               <div>
-                <button
-                  onClick={() => handleResponse(index, 0)}
-                  className={`circle ${responses[index] === 0 ? "active red" : ""}`}
-                ></button>
-                <button
-                  onClick={() => handleResponse(index, 1)}
-                  className={`circle ${responses[index] === 1 ? "active yellow" : ""}`}
-                ></button>
-                <button
-                  onClick={() => handleResponse(index, 2)}
-                  className={`circle ${responses[index] === 2 ? "active green" : ""}`}
-                ></button>
+              <button
+  onClick={() => handleResponse(index, 0)}
+  className={`circle red ${responses[index] === 0 ? "active" : ""}`}
+></button>
+<button
+  onClick={() => handleResponse(index, 1)}
+  className={`circle yellow ${responses[index] === 1 ? "active" : ""}`}
+></button>
+<button
+  onClick={() => handleResponse(index, 2)}
+  className={`circle green ${responses[index] === 2 ? "active" : ""}`}
+></button>
               </div>
             </div>
           ))}
