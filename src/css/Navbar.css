@@ -31,6 +31,33 @@
     color: #333;
   }
 
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .main-content {
+    flex: 1;
+    margin-left: 220px;
+    padding: 20px;
+  }
+  
+  .intro-section {
+    margin-bottom: 50px;
+  }
+  
+  .video-section {
+    margin-bottom: 50px;
+  }
+  
+  .contact-section {
+    margin-bottom: 50px;
+  }
+  
+  iframe {
+    width: 50%;
+    height: 400px;
+  }  
  
 
 
