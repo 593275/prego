@@ -6,7 +6,7 @@ import OmPreGO from "./Pages/OmPreGO";
 import AndreFaktorer from "./Pages/AndreFaktorer";
 import Aruba from "./Pages/Aruba";
 import AdminDashboard from './Pages/adminDashboard';
-import CsvReader from './Pages/tester';
+import Tester from './Pages/tester';
 
   const App = () =>  {
     return (
@@ -26,7 +26,7 @@ import CsvReader from './Pages/tester';
               </Route>
 
               <Route element={<Login/>} path="/"/>
-              <Route element={<CsvReader/>} path="/tester"/>
+              <Route element={<Tester/>} path="/tester"/>
 
             </Routes>
         </Router>
