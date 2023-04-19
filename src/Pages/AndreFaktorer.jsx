@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
+import "../css/Andrefaktorer.css";
+
 
 const AndreFaktorer = () => {
   const [responses, setResponses] = useState([]);
