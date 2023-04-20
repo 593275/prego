@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import "../css/Aruba.css";
+import "../css/Land.css";
 import myImage from "../Bilder/Flag_of_Aruba.svg.png"
 import { collection, query, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
+import Circles from "./sirkerlTester";
+import { getAuth } from "firebase/auth";
 
 const Aruba = () => {
   const [items, setItems] = useState([])
   const [isEditing, setIsEditing] = useState(false);
+  const auth = getAuth();
+  const user = auth.currentUser;
   const [editedData, setEditedData] = useState({
-    Inntektsgruppe: "",
-    gbd: "",
-    beskrivelse: "",
+    Inntektsgruppe: items.Inntektsgruppe || "",
+    gbd: items.gbd || "",
+    beskrivelse: items.beskrivelse || "",
   });
+  
 
   const getLand = async () => {
-    const land = "Norge"
+    const land = localStorage.getItem("userInput")
     const docRef = doc(db, "Land", land)
     const docSnap = await getDoc(docRef)
     setItems(docSnap.data());
@@ -26,16 +31,19 @@ const Aruba = () => {
   }, []);
 
   const handleEditClick = () => {
-    setIsEditing(true);
-    setEditedData({
-      Inntektsgruppe: items.Inntektsgruppe,
-      gbd: items.gbd,
-      beskrivelse: items.beskrivelse,
-    });
+    if (user && user.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2") {
+      setIsEditing(true);
+      setEditedData({
+        Inntektsgruppe: items.Inntektsgruppe,
+        gbd: items.gbd,
+        beskrivelse: items.beskrivelse,
+      });
+    }
   };
+  
 
   const handleSaveClick = async () => {
-    const docRef = doc(db, "Land", "Norge");
+    const docRef = doc(db, "Land", localStorage.getItem("userInput"));
     await updateDoc(docRef, editedData);
     getLand();
     setIsEditing(false);
@@ -66,7 +74,7 @@ const Aruba = () => {
       ) : (
         <p className="InntektsgruppeTekst">{items.Inntektsgruppe}</p>
       )}
-      <h3 className="Region">Region:</h3>
+      <h3 className="GBD">GBD:</h3>
       {isEditing ? (
         <input id="RegionTekstEdit"
           type="text"
@@ -76,7 +84,7 @@ const Aruba = () => {
           }
         />
       ) : (
-        <p className="RegionTekst">{items.gbd}</p>
+        <p className="LandGbdTekst">{items.gbd}</p>
       )}
       <h3 className="Beskrivelse">Beskrivelse: </h3>
       {isEditing ? (
@@ -89,15 +97,18 @@ const Aruba = () => {
       ) : (
         <p className="BeskrivelseTekst">{items.beskrivelse}</p>
       )}
-      {isEditing ? (
-        <>
-          <button onClick={handleSaveClick}>Save</button>
-          <button onClick={handleCancelClick}>Cancel</button>
-        </>
-      ) : (
-        <button onClick={handleEditClick}>Edit</button>
-      )}
-     
+      {user && user.uid === 'PEBh74M2IeSVfpey2C4iIsXuifu2' ? (
+        isEditing ? (
+          <>
+            <button onClick={handleSaveClick} className="saveButton">Save</button>
+            <button onClick={handleCancelClick} className="cancelButton">Cancel </button>
+          </>
+  ) : (
+    <button onClick={handleEditClick} className="EditButton">Edit</button>
+  )
+) : null}
+
+      <Circles/>
       <Navbar />
     </div>
   );

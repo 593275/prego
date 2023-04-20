@@ -6,7 +6,8 @@ import OmPreGO from "./Pages/OmPreGO";
 import AndreFaktorer from "./Pages/AndreFaktorer";
 import Aruba from "./Pages/Aruba";
 import AdminDashboard from './Pages/adminDashboard';
-import Tester from './Pages/tester';
+import Tester from './Pages/Land';
+import Circles from './Pages/sirkerlTester';
 
   const App = () =>  {
     return (
@@ -27,6 +28,7 @@ import Tester from './Pages/tester';
 
               <Route element={<Login/>} path="/"/>
               <Route element={<Tester/>} path="/tester"/>
+              <Route element={<Circles/>} path="/sirkel"/>
 
             </Routes>
         </Router>

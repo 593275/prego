@@ -1,0 +1,46 @@
+.circles-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .circle {
+    display: inline-block;
+    position: relative;
+    margin: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+  }
+  
+  .circle--green {
+    background-color: green;
+  }
+  
+  .circle--yellow {
+    background-color: yellow;
+  }
+  
+  .circle--red {
+    background-color: red;
+  }
+  
+  .percentage {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .text {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    font-size: 0.8rem;
+  }
+  

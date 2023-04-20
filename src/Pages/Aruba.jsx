@@ -4,6 +4,7 @@ import "../css/Aruba.css";
 import myImage from "../Bilder/Flag_of_Aruba.svg.png"
 import { collection, query, doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
+import { getAuth } from "firebase/auth";
 
 
 
@@ -12,7 +13,10 @@ const Aruba = () => {
   const [modalOpenGreen, setModalOpenGreen] = useState(false);
   const [modalOpenOrange, setModalOpenOrange] = useState(false);
   const [items, setItems] = useState([])
+  const auth = getAuth();
+  const user = auth.currentUser;
   
+  console.log(user.uid)
   
 
   useEffect(() => {

@@ -4,17 +4,16 @@ import Navbar from "./Navbar";
 import { db } from "../config/firebase-config"
 import { useNavigate } from 'react-router-dom';
 import { collection, query, doc, getDocs } from "firebase/firestore"; 
-import { landDb } from "../Functions/function";
 
 const SearchBar =  () => {
   let land = "";
   const navigate = useNavigate();
   let filteredItems = ""
-  let arrayItems =""
   const landCollectionRef = collection(db, "Land");
   const [query, setQuery] = useState(""); 
   const [items, setItems] = useState([])
   const [isLoading, setIsLoading] = useState(true);
+ 
 
   useEffect(() => {
     const getLand = async () => {
@@ -55,10 +54,8 @@ const SearchBar =  () => {
       land = query
       localStorage.setItem('userInput', query);
       console.log(land)
+      navigate("/tester")
     }
-
-    navigate("/Aruba")
-      
 
   };
 
