@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Papa from "papaparse";
 import { db } from "../config/firebase-config"
 import { setDoc, updateDoc, doc, getDoc } from "firebase/firestore"; 
-import { landDb } from "../Functions/function"
 import SearchBar from "./Dashboard";
 
  function App() {
@@ -90,6 +89,7 @@ import SearchBar from "./Dashboard";
       },
       
     });
+
   };
 
   return (
