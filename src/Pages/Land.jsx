@@ -6,6 +6,7 @@ import { db } from "../config/firebase-config"
 import Circles from "./sirkerlTester";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import Tester from "./Graph";
 
 const Land = () => {
   const navigate = useNavigate();
@@ -132,6 +133,12 @@ const Land = () => {
 
       <Circles/>
       <Navbar />
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+
+      <Tester />
     </div>
   );
 };
