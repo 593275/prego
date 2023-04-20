@@ -94,6 +94,12 @@ div {
     left: 66.4%;
   }
 
+  .DeleteButton {
+    position: absolute;
+    top: 47.2%;
+    left: 64.2%;
+  }
+
   #BeskrivelseEdit {
     display: block;
     margin: 0 auto; 
@@ -114,6 +120,13 @@ div {
     position: absolute;
     top: 49%;
     left: 65.4%;
+  }
+
+  #msg {
+    width: 17%;
+    margin: 0 auto;
+    color: red;
+    transform: translate(10%, -230%);
   }
 
 
