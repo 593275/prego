@@ -6,6 +6,7 @@ import { collection, query, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
 import Circles from "./sirkerlTester";
 import { getAuth } from "firebase/auth";
+import Tester from "./Graph";
 
 const Aruba = () => {
   const [items, setItems] = useState([])
@@ -110,6 +111,12 @@ const Aruba = () => {
 
       <Circles/>
       <Navbar />
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+
+      <Tester />
     </div>
   );
 };

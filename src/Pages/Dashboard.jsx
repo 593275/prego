@@ -54,7 +54,7 @@ const SearchBar =  () => {
       land = query
       localStorage.setItem('userInput', query);
       console.log(land)
-      navigate("/tester")
+      navigate("/Land")
     }
 
   };
