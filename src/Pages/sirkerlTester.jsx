@@ -25,7 +25,11 @@ function Circles() {
       const land = localStorage.getItem("userInput")
       const docRef = doc(db, "Land", land)
       const docSnap = await getDoc(docRef)
-      setLandData(docSnap.data());
+      if(docSnap.data().N < 1000) {
+
+      } else {
+        setLandData(docSnap.data());
+      }
     };
 
     const getNorgeData = async () => {
@@ -108,10 +112,13 @@ function Circles() {
     const colors = roundedNumbers.map((num, i) => {
      
       if (num < roundedNumbersNorge[i]-2) {
+        
         return "#008000";
       } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num || num == roundedNumbersNorge  ) {
+       
         return "#ffff00"
       } else if(roundedNumbersNorge[i] + 2 < num) {
+        
         return "#FF0000"
       } else {
         return "#745194";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import "../css/Aruba.css";
+import "../css/Land.css";
 import myImage from "../Bilder/Flag_of_Aruba.svg.png"
 import { collection, query, doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config" 

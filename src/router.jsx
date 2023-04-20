@@ -4,10 +4,9 @@ import Login from './Pages/LoginForm';
 import Dashboard from './Pages/Dashboard';
 import OmPreGO from "./Pages/OmPreGO";
 import AndreFaktorer from "./Pages/AndreFaktorer";
-import Aruba from "./Pages/Aruba";
 import AdminDashboard from './Pages/adminDashboard';
-import Tester from './Pages/Land';
-import Circles from './Pages/sirkerlTester';
+import Land from './Pages/Land';
+import Tester from './Pages/Graph';
 
   const App = () =>  {
     return (
@@ -19,7 +18,7 @@ import Circles from './Pages/sirkerlTester';
                   <Route element={<Dashboard/>} path="/dashboard" exact/>
                   <Route element={<OmPreGO/>} path="/OmPreGo"/>
                   <Route element={<AndreFaktorer/>} path="/AndreFaktorer"/>
-                  <Route element={<Aruba/>} path="/Aruba"/>
+                  <Route element={<Land/>} path="/Land"/>
               </Route>
 
               <Route element = {<AdminRoutes />}>
@@ -28,7 +27,7 @@ import Circles from './Pages/sirkerlTester';
 
               <Route element={<Login/>} path="/"/>
               <Route element={<Tester/>} path="/tester"/>
-              <Route element={<Circles/>} path="/sirkel"/>
+      
 
             </Routes>
         </Router>
