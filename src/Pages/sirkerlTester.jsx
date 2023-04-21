@@ -42,7 +42,7 @@ function Circles() {
         const totalN_pet = dataArray.reduce((acc, cur) => acc + cur.n_pet, 0);
         const totalN_gdm = dataArray.reduce((acc, cur) => acc + cur.n_gdm, 0);
         const totalN_cs = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
-        const totalN_fa = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
+        const totalN_fa = dataArray.reduce((acc, cur) => acc + cur.n_fa, 0);
 
         const dataGBD = {
           pct_sb: (totalN_sb / totalN)*100,
