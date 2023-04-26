@@ -34,45 +34,19 @@ function LineChart() {
           const docSnap = await getDoc(docRef)
           landAar[index] = (docSnap.data());
       }
-
+      setItems3(landAar)
       };
+
       const getLandData = async () => {
-        const land = localStorage.getItem("userInput")
-        const docRef = doc(db, "Land", land)
-        const docSnap = await getDoc(docRef)
-        if(docSnap.data().N < 1000) {
-          const landRef = collection(db, "Land");
-          const queryGBD = query(landRef, where("gbd", "==", docSnap.data().gbd))
-          const querySnapshot = await getDocs(queryGBD)
-  
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            dataArray.push(data);
-          });
-  
-          const totalN = dataArray.reduce((acc, cur) => acc + cur.N, 0);
-          const totalN_sb = dataArray.reduce((acc, cur) => acc + cur.n_sb, 0);
-          const totalN_lbw = dataArray.reduce((acc, cur) => acc + cur.n_lbw, 0);
-          const totalN_pet = dataArray.reduce((acc, cur) => acc + cur.n_pet, 0);
-          const totalN_gdm = dataArray.reduce((acc, cur) => acc + cur.n_gdm, 0);
-          const totalN_cs = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
-          const totalN_fa = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
-  
-          const dataGBD = {
-            pct_sb: (totalN_sb / totalN)*100,
-            pct_lbw: (totalN_lbw / totalN)*100,
-            pct_pet: (totalN_pet / totalN)*100,
-            pct_gdm: (totalN_gdm / totalN)*100,
-            pct_cs: (totalN_cs / totalN)*100,
-            pct_fa: (totalN_fa / totalN)*100
-          }
-  
-          setItems2(dataGBD)
-       
-  
-        } else {
-          setItems2(docSnap.data());
-        }
+
+        const landAar2 = []
+        const land = "Etiopia"
+         for(let index = 0; index < yearArray.length; index ++) {
+          const docRef = doc(db, "Land" + yearArray[index], land + yearArray[index])
+          const docSnap = await getDoc(docRef)
+          landAar2[index] = (docSnap.data());
+      }
+      setItems2(landAar2)
       };
   
 
@@ -82,7 +56,7 @@ function LineChart() {
     }, []);
   
    
-  if(typeof items3 !== 'undefined') {
+  if(typeof items3 !== 'undefined' && typeof items2 !== 'undefined') {
      data = {
       
       labels: ['2001', '2005', '2009', '2013', '2017', '2021'],
@@ -96,7 +70,7 @@ function LineChart() {
         },
         {
           label: [localStorage.getItem("userInput")],
-          data: [items2.pct_sb, items2.pct_lbw, items2.pct_pet, items2.pct_gdm, items2.pct_cs, items2.pct_fa],
+          data: [items2[0]?.pct_sb,items2[1]?.pct_sb,items2[2]?.pct_sb,items2[3]?.pct_sb,items2[4]?.pct_sb],
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1,
