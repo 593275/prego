@@ -7,6 +7,8 @@ import Circles from "./sirkerlTester";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import Tester from "./Graph";
+import LineChart from "./LineChart";
+
 
 const Land = () => {
   const navigate = useNavigate();
@@ -49,6 +51,7 @@ const Land = () => {
   };
   
 
+  // Updates the data for a specific country in Firebase and fetches the updated data
   const handleSaveClick = async () => {
     const docRef = doc(db, "Land", localStorage.getItem("userInput"));
     await updateDoc(docRef, editedData);
@@ -56,13 +59,13 @@ const Land = () => {
     setIsEditing(false);
   };
 
+  // Cancels the editing mode and resets the editedData state
   const handleCancelClick = () => {
     setIsEditing(false);
     setEditedData({
       Inntektsgruppe: items.Inntektsgruppe,
       gbd: items.gbd,
       beskrivelse: items.beskrivelse,
-     
     });
   };
 
