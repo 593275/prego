@@ -20,21 +20,21 @@ function LineChart() {
     const [items2, setItems2] = useState([])
     const [items3, setItems3] = useState([])
     const dataArray = []
+    const yearArray = [2001,2005,2009,2013,2017,2021];
+    let data = ""
   
     useEffect(() => {
 
       const landAar = []
 
       const getNorgeData = async () => {
-        const land = "Norge";
-        const yearArray = [2001,2005,2009,2013,2017,2021];
-        for(let index = 0; index < yearArray.length; index ++) {
+      const land = "Norge";
+      for(let index = 0; index < yearArray.length; index ++) {
           const docRef = doc(db, "Land" + yearArray[index], land + yearArray[index])
           const docSnap = await getDoc(docRef)
           landAar[index] = (docSnap.data());
-        }
-      setItems3(landAar)
-      console.log(items3)
+      }
+
       };
       const getLandData = async () => {
         const land = localStorage.getItem("userInput")
@@ -81,15 +81,15 @@ function LineChart() {
       getLandData();
     }, []);
   
-    
-  
-  
-    const data = {
+   
+  if(typeof items3 !== 'undefined') {
+     data = {
+      
       labels: ['2001', '2005', '2009', '2013', '2017', '2021'],
       datasets: [
         {
           label: 'Norge',
-          data: [items3[0].pct_sb,items3[1].pct_sb,items3[2].pct_sb,items3[3].pct_sb,items3[4].pct_sb],
+          data: [items3[0]?.pct_sb,items3[1]?.pct_sb,items3[2]?.pct_sb,items3[3]?.pct_sb,items3[4]?.pct_sb],
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1,
@@ -103,6 +103,7 @@ function LineChart() {
         },
       ]
     };
+  }
   
     const options = {};
   
