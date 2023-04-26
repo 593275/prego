@@ -42,7 +42,7 @@ function Circles() {
         const totalN_pet = dataArray.reduce((acc, cur) => acc + cur.n_pet, 0);
         const totalN_gdm = dataArray.reduce((acc, cur) => acc + cur.n_gdm, 0);
         const totalN_cs = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
-        const totalN_fa = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
+        const totalN_fa = dataArray.reduce((acc, cur) => acc + cur.n_fa, 0);
 
         const dataGBD = {
           pct_sb: (totalN_sb / totalN)*100,
@@ -139,16 +139,83 @@ function Circles() {
     ];
   
     const colors = roundedNumbers.map((num, i) => {
-     console.log(roundedNumbersNorge[i]+2)
-      if (num < roundedNumbersNorge[i]-2) {
-        return "#008000";
-      } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
-        return "#ffff00"
-      } else if(roundedNumbersNorge[i] + 2 < num) {
-        return "#FF0000"
+      if(i === 0) {
+
+        if (num <= roundedNumbersNorge[i]) {
+          return "#008000";
+        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+          return "#ffff00";
+        } else if(roundedNumbersNorge[i] + 2 < num) {
+          return "#FF0000";
+        } else {
+          return "#745194";
+        }
+
+      } else if(i === 1) {
+
+        if (num < roundedNumbersNorge[i]-2) {
+          return "#008000";
+        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+          return "#ffff00";
+        } else if(roundedNumbersNorge[i] + 2 < num) {
+          return "#FF0000";
+        } else {
+          return "#745194";
+        }
+        
+      } else if(i === 2) {
+
+        if (num < roundedNumbersNorge[i]-2) {
+          return "#008000";
+        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+          return "#ffff00";
+        } else if(roundedNumbersNorge[i] + 2 < num) {
+          return "#FF0000";
+        } else {
+          return "#745194";
+        }
+
+      } else if(i === 3) {
+
+        if (num < roundedNumbersNorge[i]-2) {
+          return "#008000";
+        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+          return "#ffff00";
+        } else if(roundedNumbersNorge[i] + 2 < num) {
+          return "#FF0000";
+        } else {
+          return "#745194";
+        }
+
+      } else if(i === 4) {
+
+        if (num < roundedNumbersNorge[i]-2) {
+          return "#008000";
+        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+          return "#ffff00";
+        } else if(roundedNumbersNorge[i] + 2 < num) {
+          return "#FF0000";
+        } else {
+          return "#745194";
+        }
+
+      } else if(i === 5) {
+
+        if (num < roundedNumbersNorge[i]-2) {
+          return "#FF0000";
+        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+          return "#ffff00";
+        } else if(roundedNumbersNorge[i] + 2 < num) {
+          return "#008000";
+          
+        } else {
+          return "#745194";
+        }
+
       } else {
-        return "#745194";
+        return "#000000"
       }
+      
     });
   
     // Check if any of the numbers are undefined

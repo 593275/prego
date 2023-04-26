@@ -1,18 +1,10 @@
 import { Outlet, Navigate } from 'react-router-dom'
 import { auth } from "../config/firebase-config"
 import React, { useEffect, useState } from "react";
-import { collection, onSnapshot, getDocs } from "firebase/firestore"; 
+import { collection, onSnapshot, getDocs, getDoc } from "firebase/firestore"; 
 import { db } from "../config/firebase-config"
 
-export function useSharedData(initialData) {
-    const [data, setData] = useState(initialData);
-  
-    const updateData = (newData) => {
-      setData(newData);
-    };
-  
-    return [data, updateData];
-  }
+
   
 export const PrivateRoutes = () => {
     const user = auth.currentUser;
@@ -50,3 +42,13 @@ export const getCollectionIds = async (collectionName) => {
     return ids;
   };
 
+export const getNorgeData = async () => {
+  const [NorgeData, setNorgeData] = useState("");
+    const land = "Norge"
+    const docRef = doc(db, "Land", land)
+    const docSnap = await getDoc(docRef)
+    setNorgeData(docSnap.data());
+    return NorgeData;
+  };
+
+  
