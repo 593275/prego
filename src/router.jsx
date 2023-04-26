@@ -7,6 +7,7 @@ import AndreFaktorer from "./Pages/AndreFaktorer";
 import AdminDashboard from './Pages/adminDashboard';
 import Land from './Pages/Land';
 import Tester from './Pages/Graph';
+import LineChart from "./Pages/LineChart";
 
   const App = () =>  {
     return (
@@ -26,7 +27,7 @@ import Tester from './Pages/Graph';
               </Route>
 
               <Route element={<Login/>} path="/"/>
-              <Route element={<Tester/>} path="/tester"/>
+              <Route element={<LineChart/>} path="/LineChart"/>
       
 
             </Routes>
