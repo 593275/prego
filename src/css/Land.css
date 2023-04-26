@@ -83,10 +83,10 @@ div {
     border-style:solid;
     border-width: thin;
     border-color: #DCDCDC;
-    width: 25vw;
-    height: 31vh;
-    text-align: left;
-    transform: translate(5vw, -30.1vh);
+    width: 5vw;
+    height: 2vh;
+    text-align: right;
+    transform: translate(10vw, -30.1vh);
   }
 
   .EditButton {
@@ -121,6 +121,11 @@ div {
     position: absolute;
     top: 49vh;
     left: 65.4vw;
+  }
+
+  .sirkler {
+    
+    transform: translate(0, 0);
   }
 
   #msg {

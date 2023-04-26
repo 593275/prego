@@ -18,10 +18,12 @@ import {
 function LineChart() {
     const [items, setItems] = useState([])
     const [items2, setItems2] = useState([])
-    const landAar = []
+    const [items3, setItems3] = useState([])
     const dataArray = []
   
     useEffect(() => {
+
+      const landAar = []
 
       const getNorgeData = async () => {
         const land = "Norge";
@@ -31,10 +33,8 @@ function LineChart() {
           const docSnap = await getDoc(docRef)
           landAar[index] = (docSnap.data());
         }
-      
-        
-      
-      console.log(landAar)
+      setItems3(landAar)
+      console.log(items3)
       };
       const getLandData = async () => {
         const land = localStorage.getItem("userInput")
@@ -89,7 +89,7 @@ function LineChart() {
       datasets: [
         {
           label: 'Norge',
-          data: [items.pct_sb, items.pct_lbw, items.pct_pet, items.pct_gdm, items.pct_cs, items.pct_fa],
+          data: [items3[0].pct_sb,items3[1].pct_sb,items3[2].pct_sb,items3[3].pct_sb,items3[4].pct_sb],
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1,

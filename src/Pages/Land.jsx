@@ -20,7 +20,6 @@ const Land = () => {
   const [editedData, setEditedData] = useState({
     Inntektsgruppe: items.Inntektsgruppe || "",
     gbd: items.gbd || "",
-    beskrivelse: items.beskrivelse || "",
   });
   
 
@@ -45,7 +44,6 @@ const Land = () => {
       setEditedData({
         Inntektsgruppe: items.Inntektsgruppe,
         gbd: items.gbd,
-        beskrivelse: items.beskrivelse,
       });
     }
   };
@@ -109,17 +107,10 @@ const Land = () => {
       ) : (
         <p className="LandGbdTekst">{items.gbd}</p>
       )}
-      <h3 className="Beskrivelse">Beskrivelse: </h3>
-      {isEditing ? (
-         <textarea id ="BeskrivelseEdit" 
-         value={editedData.beskrivelse}
-         onChange={(e) =>
-           setEditedData({ ...editedData, beskrivelse: e.target.value })
-         }
-       />
-      ) : (
-        <p className="BeskrivelseTekst">{items.beskrivelse}</p>
-      )}
+      <h3 className="Beskrivelse">risiko score: </h3>
+      
+        <p className="BeskrivelseTekst">{items.risiko_score}</p>
+      
       {user && user.uid === 'PEBh74M2IeSVfpey2C4iIsXuifu2' ? (
         isEditing ? (
           <>
@@ -134,13 +125,8 @@ const Land = () => {
   )
 ) : null}
 
-      <Circles/>
+      <Circles calssName="sirkler"/>
       <Navbar />
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-
       <Tester />
     </div>
   );
