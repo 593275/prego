@@ -18,28 +18,23 @@ import {
 function LineChart() {
     const [items, setItems] = useState([])
     const [items2, setItems2] = useState([])
-    const [items3, setItems3] = useState([])
-
+    const landAar = []
     const dataArray = []
-    const yearArray = [2001,2005,2009,2013,2017,2021];
-
   
     useEffect(() => {
-
-
 
       const getNorgeData = async () => {
         const land = "Norge";
         const yearArray = [2001,2005,2009,2013,2017,2021];
-
-        for (let index = 0; index < yearArray.length; index++) {
-        console.log("Land" + yearArray[index]);
+        for(let index = 0; index < yearArray.length; index ++) {
+          const docRef = doc(db, "Land" + yearArray[index], land + yearArray[index])
+          const docSnap = await getDoc(docRef)
+          landAar[index] = (docSnap.data());
+        }
+      
         
-        const docRef = doc(db, "Land" + yearArray[index], land + yearArray[index])
-        const docSnap = await getDoc(docRef)
-        setItems3(docSnap.data());
-      }
-      console.log(items3)
+      
+      console.log(landAar)
       };
       const getLandData = async () => {
         const land = localStorage.getItem("userInput")
