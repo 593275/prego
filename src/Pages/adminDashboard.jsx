@@ -6,17 +6,17 @@ import SearchBar from "./Dashboard";
 
  function App() {
   const [data, setData] = React.useState(null);
-  const [error, setError] = useState('');
+  const [error1, setError1] = useState('');
+  const [good, setGood] = useState('');
 
-  const handleFileUpload =  async (e) => {
-    console.log(1)
+  const handleFileUploadGenerell =  async (e) => {
     const file = e.target.files[0];
     Papa.parse(file, {
       encoding: "utf-8",
       delimiter: ";",
       complete: async (results) => {
         const items = results.data.slice(1)
-        .filter((item) => item.length === 15) 
+        .filter((item) => item.length === 16) 
         .map((item) => {
           return {
             ctry: item[0],
@@ -34,6 +34,7 @@ import SearchBar from "./Dashboard";
             n_fa: parseInt(item[12]),
             pct_fa: parseFloat(item[13].replace(",", ".")),
             gbd: item[14],
+            risiko_score: parseFloat(item[15].replace(",", "."))
           };
         });
         for (const item of items) {
@@ -59,10 +60,11 @@ import SearchBar from "./Dashboard";
               pct_cs: item.pct_cs,
               n_fa: item.n_fa,
               pct_fa: item.pct_fa,
-              gbd: item.gbd
+              gbd: item.gbd,
+              risiko_score: item.risiko_score,
             })
 
-            setError("Et eller flere land i filen ekstisterer allerede i databasen og vil bli oppdatert")
+            setError1("Et eller flere land i filen ekstisterer allerede i databasen og vil bli oppdatert")
           } else {
             await setDoc(doc(db, "Land", item.ctry), {
               ctry: item.ctry,
@@ -79,7 +81,93 @@ import SearchBar from "./Dashboard";
               pct_cs: item.pct_cs,
               n_fa: item.n_fa,
               pct_fa: item.pct_fa,
-              gbd: item.gbd
+              gbd: item.gbd,
+              risikoscore: item.risiko_score,
+            });
+            
+          }
+        
+        }
+
+      },
+      
+    });
+
+  };
+
+  const handleFileUploadPerAar =  async (e) => {
+    const file = e.target.files[0];
+    Papa.parse(file, {
+      encoding: "utf-8",
+      delimiter: ";",
+      complete: async (results) => {
+        const items = results.data.slice(1)
+        .filter((item) => item.length === 15) 
+        .map((item) => {
+          return {
+            ctry: item[0],
+            year: item[1],
+            N: parseInt(item[2]),
+            n_sb: parseInt(item[3]),
+            pct_sb: parseFloat(item[4].replace(",", ".")),
+            n_lbw: parseInt(item[5]),
+            pct_lbw: parseFloat(item[6].replace(",", ".")),
+            n_pet: parseInt(item[7]),
+            pct_pet: parseFloat(item[8].replace(",", ".")),
+            n_gdm: parseInt(item[9]),
+            pct_gdm: parseFloat(item[10].replace(",", ".")),
+            n_cs: parseInt(item[11]),
+            pct_cs: parseFloat(item[12].replace(",", ".")),
+            n_fa: parseInt(item[13]),
+            pct_fa: parseFloat(item[14].replace(",", ".")),
+          };
+        });
+  
+        for (const item of items) {
+          console.log(item)
+        }
+        for (const item of items) {
+          console.log("Land"+item.year)
+          const docRef = doc(db, "Land"+item.year, item.ctry+item.year)
+          const docSnap = await getDoc(docRef)
+          if(docSnap.exists()) {
+       
+            await updateDoc(docRef, {
+              ctry: item.ctry,
+              N: item.N,
+              n_sb: item.n_sb,
+              pct_sb: item.pct_sb,
+              n_lbw: item.n_lbw,
+              pct_lbw: item.pct_lbw,
+              n_pet: item.n_pet,
+              pct_pet: item.pct_pet,
+              n_gdm: item.n_gdm,
+              pct_gdm: item.pct_gdm,
+              n_cs: item.n_cs,
+              pct_cs: item.pct_cs,
+              n_fa: item.n_fa,
+              pct_fa: item.pct_fa,
+              
+            })
+
+            setError1("Et eller flere land i filen ekstisterer allerede i databasen og vil bli oppdatert")
+          } else {
+            await setDoc(doc(db, "Land"+item.year, item.ctry+item.year), {
+              ctry: item.ctry,
+              N: item.N,
+              n_sb: item.n_sb,
+              pct_sb: item.pct_sb,
+              n_lbw: item.n_lbw,
+              pct_lbw: item.pct_lbw,
+              n_pet: item.n_pet,
+              pct_pet: item.pct_pet,
+              n_gdm: item.n_gdm,
+              pct_gdm: item.pct_gdm,
+              n_cs: item.n_cs,
+              pct_cs: item.pct_cs,
+              n_fa: item.n_fa,
+              pct_fa: item.pct_fa,
+              
             });
             
           }
@@ -95,9 +183,11 @@ import SearchBar from "./Dashboard";
   return (
     <div>
       <SearchBar/> <br/>
-      <p3>Legg in en CSV fil</p3><br/>
-      <input type="file" onChange={handleFileUpload} />
-      {error && <p>{error}</p>}
+      <p3>Legg inn en CSV fil for sammenlagt år</p3><br/>
+      <input type="file" onChange={handleFileUploadGenerell} /><br/>
+      <p3>Legg inn en CSV fil for 2001-2021</p3><br/>
+      <input type="file" onChange={handleFileUploadPerAar} />
+      {error1 && <p>{error1}</p>}
     </div>
   );
 }
