@@ -39,6 +39,7 @@ const Navbar = () => {
     <nav className="navbar">
       <ul>
         <li><a href="#" onClick={handleClick}>Fødeland</a></li>
+        <li><a href="#" onClick={handleClick}>Beskrivelse</a></li>
         <li><a href="#" onClick={handleClick}>Migrasjonsrelaterte faktorer</a></li>
         <li><a href="#" onClick={handleClick}>Om PreGO!</a></li>
         <li><a href="#" onClick={handleClick}>Log ut</a></li>

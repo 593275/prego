@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { collection, query, doc, getDoc, where, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
 import "../css/sirkel.css"
+import LineChart from './LineChart';
 
 function Circles() {
   const canvasRef = useRef(null);
@@ -10,6 +11,7 @@ function Circles() {
   const [norgeData, setNorgeData] = useState(null);
   const tester = 1;
   const labels = ['Stillbirth', 'Low birthweight', 'Preeclampsia', 'Gestational diabetes', 'Cesarean section', 'Folic acid'];
+  const variables = ['pct_sb', 'pct_lbw', 'pct_pet', 'pct_gdm', 'pct_cs', 'pct_fa']
   const dataArray = [];
 
   const showModal = (circleIndex) => {
@@ -261,6 +263,7 @@ function Circles() {
           <span className="close" onClick={hideModal}>&times;</span>
           <h2>{labels[selectedCircle]}</h2>
           <p3>Fakta om {labels[selectedCircle]}?</p3>
+          <LineChart label = {variables[selectedCircle]} />
         </div>
       </div>
       )}
