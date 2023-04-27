@@ -43,15 +43,18 @@ const AndreFaktorer = () => {
       };
     
       return (
-        <div style={{ textAlign: "center" }}>
+        <div id ="tekststyle">
           <h1 style={{ display: "inline-block" }}>Migrasjonsrelaterte faktorer</h1>
           <Navbar />
           <h2>Evaluering</h2>
           <p>Velg mellom rød, gul og grønn sirkel for hver av følgende spørsmål:</p>
           {questions.map((question, index) => (
-            <div key={index}>
+            <div id="tekst" key={index}>
+
               <h3>{question.question}</h3>
-              <p>{question.description}</p>
+
+              <h4 id="description">{question.description}</h4>
+
               <div>
               <button
   onClick={() => handleResponse(index, 0)}
@@ -72,7 +75,7 @@ const AndreFaktorer = () => {
           {responses.length === questions.length ? (
             <>
               <p>Gjennomsnittlig valgt farge: {averageColor()}</p>
-              <div
+              <div id="average"
                 className={`circle ${averageColor()}`}
                 style={{
                   backgroundColor:
