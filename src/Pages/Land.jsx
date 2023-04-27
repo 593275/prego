@@ -7,7 +7,7 @@ import Circles from "./sirkerlTester";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import Tester from "./Graph";
-import LineChart from "./LineChart";
+
 
 
 const Land = () => {
@@ -28,6 +28,7 @@ const Land = () => {
     const docRef = doc(db, "Land", land)
     const docSnap = await getDoc(docRef)
     setItems(docSnap.data());
+    
 
     if(docSnap.data().N < 1000) {
       setMsg("NB! Bruker GBD data pga lite data fra landet")
@@ -37,7 +38,7 @@ const Land = () => {
   useEffect(() => {
     getLand();
   }, []);
-
+ 
   const handleEditClick = () => {
     if (user && user.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2") {
       setIsEditing(true);
@@ -107,9 +108,9 @@ const Land = () => {
       ) : (
         <p className="LandGbdTekst">{items.gbd}</p>
       )}
-      <h3 className="Beskrivelse">risiko score: </h3>
+      <h3 className="risikoScore">risiko score: </h3>
       
-        <p className="BeskrivelseTekst">{items.risiko_score}</p>
+        <p className="risikoScoreTekst">{items.risiko_score}</p>
       
       {user && user.uid === 'PEBh74M2IeSVfpey2C4iIsXuifu2' ? (
         isEditing ? (

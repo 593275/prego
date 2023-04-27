@@ -63,7 +63,7 @@ div {
     transform: translate(54%, -100%);
   }
 
-  .Beskrivelse {
+  .risikoScore {
 
     display: block;
     
@@ -76,17 +76,14 @@ div {
 
   }
 
-  .BeskrivelseTekst {
+  .risikoScoreTekst {
     display: block;
     overflow: auto;
     margin: 0 auto; 
-    border-style:solid;
-    border-width: thin;
-    border-color: #DCDCDC;
-    width: 5vw;
+    width: 2vw;
     height: 2vh;
     text-align: right;
-    transform: translate(10vw, -30.1vh);
+    transform: translate(17vw, -30.1vh);
   }
 
   .EditButton {

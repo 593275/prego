@@ -1,0 +1,15 @@
+.Beskrivelse {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.4;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 70vh;
+    width: 70vw;
+    transform: translate(20vw);
+}
+
+.Land {
+    transform: translate(-27vw);
+}

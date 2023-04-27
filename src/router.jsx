@@ -6,7 +6,7 @@ import OmPreGO from "./Pages/OmPreGO";
 import AndreFaktorer from "./Pages/AndreFaktorer";
 import AdminDashboard from './Pages/adminDashboard';
 import Land from './Pages/Land';
-import Tester from './Pages/Graph';
+import Tester from './Pages/Beskrivelse';
 import LineChart from "./Pages/LineChart";
 
   const App = () =>  {
@@ -20,6 +20,7 @@ import LineChart from "./Pages/LineChart";
                   <Route element={<OmPreGO/>} path="/OmPreGo"/>
                   <Route element={<AndreFaktorer/>} path="/AndreFaktorer"/>
                   <Route element={<Land/>} path="/Land"/>
+                  <Route element={<Tester/>} path="/beskrivelse"/>
               </Route>
 
               <Route element = {<AdminRoutes />}>

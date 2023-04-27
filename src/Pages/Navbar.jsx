@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const auth = getAuth();
   const user = auth.currentUser;
+  const valgtLand = localStorage.getItem("userInput")
 
   const navigate = useNavigate();
 
@@ -28,10 +29,13 @@ const Navbar = () => {
       auth.signOut()
         .then(() => {
           navigate("/")
+          localStorage.removeItem("userInput")
         })
         .catch((error) => {
           console.log(error)
         });
+    } else if(knapp === "Beskrivelse") {
+      navigate("/beskrivelse")
     }
   };
 
@@ -39,7 +43,9 @@ const Navbar = () => {
     <nav className="navbar">
       <ul>
         <li><a href="#" onClick={handleClick}>Fødeland</a></li>
-        <li><a href="#" onClick={handleClick}>Beskrivelse</a></li>
+        {valgtLand && (
+          <li><a href="#" onClick={handleClick}>Beskrivelse</a></li>
+        )}
         <li><a href="#" onClick={handleClick}>Migrasjonsrelaterte faktorer</a></li>
         <li><a href="#" onClick={handleClick}>Om PreGO!</a></li>
         <li><a href="#" onClick={handleClick}>Log ut</a></li>
