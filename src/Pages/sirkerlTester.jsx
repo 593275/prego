@@ -143,11 +143,11 @@ function Circles() {
     const colors = roundedNumbers.map((num, i) => {
       if(i === 0) {
 
-        if (num <= roundedNumbersNorge[i]) {
+        if (num <= roundedNumbersNorge[i]*0.5) {
           return "#008000";
-        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+        } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i] + 2 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 <= num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -155,11 +155,11 @@ function Circles() {
 
       } else if(i === 1) {
 
-        if (num < roundedNumbersNorge[i]-2) {
+        if (num <= roundedNumbersNorge[i]*0.5) {
           return "#008000";
-        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+        } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i] + 2 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 < num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -167,23 +167,22 @@ function Circles() {
         
       } else if(i === 2) {
 
-        if (num < roundedNumbersNorge[i]-2) {
+        if (num <= roundedNumbersNorge[i]*0.5) {
           return "#008000";
-        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+        } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i] + 2 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 < num) {
           return "#FF0000";
         } else {
           return "#745194";
         }
-
       } else if(i === 3) {
 
-        if (num < roundedNumbersNorge[i]-2) {
+        if (num <= roundedNumbersNorge[i]*0.5) {
           return "#008000";
-        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+        } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i] + 2 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 < num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -191,11 +190,11 @@ function Circles() {
 
       } else if(i === 4) {
 
-        if (num < roundedNumbersNorge[i]-2) {
+        if (num <= roundedNumbersNorge[i]*0.5) {
           return "#008000";
-        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+        } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i] + 2 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 < num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -203,11 +202,11 @@ function Circles() {
 
       } else if(i === 5) {
 
-        if (num < roundedNumbersNorge[i]-2) {
+        if (num <= roundedNumbersNorge[i]*0.5) {
           return "#FF0000";
-        } else if (num > roundedNumbersNorge[i]-2 && roundedNumbersNorge[i] + 2 > num) {
+        } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i] + 2 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 < num) {
           return "#008000";
           
         } else {

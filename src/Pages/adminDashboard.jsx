@@ -5,10 +5,7 @@ import { setDoc, updateDoc, doc, getDoc } from "firebase/firestore";
 import SearchBar from "./Dashboard";
 
  function App() {
-  const [data, setData] = React.useState(null);
   const [error1, setError1] = useState('');
-  const [good, setGood] = useState('');
-
   const handleFileUploadGenerell =  async (e) => {
     const file = e.target.files[0];
     Papa.parse(file, {
@@ -61,7 +58,7 @@ import SearchBar from "./Dashboard";
               n_fa: item.n_fa,
               pct_fa: item.pct_fa,
               gbd: item.gbd,
-              risiko_score: item.risiko_score,
+              risiko_score: item.risiko_score.toFixed(2),
             })
 
             setError1("Et eller flere land i filen ekstisterer allerede i databasen og vil bli oppdatert")
@@ -82,7 +79,7 @@ import SearchBar from "./Dashboard";
               n_fa: item.n_fa,
               pct_fa: item.pct_fa,
               gbd: item.gbd,
-              risikoscore: item.risiko_score,
+              risikoscore: item.risiko_score.toFixed(2),
             });
             
           }
