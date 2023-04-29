@@ -81,20 +81,37 @@ function Tester() {
     datasets: [
       {
         label: 'Norge',
-        data: [items.pct_sb.toFixed(1), items.pct_lbw.toFixed(1), items.pct_pet.toFixed(1), items.pct_gdm.toFixed(1), items.pct_cs.toFixed(1), items.pct_fa.toFixed(1)],
+        data: [
+          //toFixed(1) fungerer ikke med databasen
+          Math.round(parseFloat(items.pct_sb) * 10) / 10,
+          Math.round(parseFloat(items.pct_lbw) * 10) / 10,
+          Math.round(parseFloat(items.pct_pet) * 10) / 10,
+          Math.round(parseFloat(items.pct_gdm) * 10) / 10,
+          Math.round(parseFloat(items.pct_cs) * 10) / 10,
+          Math.round(parseFloat(items.pct_fa) * 10) / 10
+        ],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
       {
         label: [localStorage.getItem("userInput")],
-        data: [items2.pct_sb.toFixed(1), items2.pct_lbw.toFixed(1), items2.pct_pet.toFixed(1), items2.pct_gdm.toFixed(1), items2.pct_cs.toFixed(1), items2.pct_fa.toFixed(1)],
+        data: [
+          //toFixed(1) fungerer ikke med databasen
+          Math.round(parseFloat(items2.pct_sb) * 10) / 10,
+          Math.round(parseFloat(items2.pct_lbw) * 10) / 10,
+          Math.round(parseFloat(items2.pct_pet) * 10) / 10,
+          Math.round(parseFloat(items2.pct_gdm) * 10) / 10,
+          Math.round(parseFloat(items2.pct_cs) * 10) / 10,
+          Math.round(parseFloat(items2.pct_fa) * 10) / 10
+        ],
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1,
       },
     ]
   };
+  
   
 
   const options = {};
