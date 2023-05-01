@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import "../css/Land.css";
-import { collection, query, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { collection, query, doc, getDoc, updateDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
 import Circles from "./sirkerlTester";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import Tester from "./Graph";
+import { riskScoreCalc } from "../Functions/function";
 
 
 
@@ -15,29 +16,35 @@ const Land = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   const [items, setItems] = useState([])
+  const [items2, setItems2] = useState([])
   const [isEditing, setIsEditing] = useState(false);
   const [msg, setMsg] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const [editedData, setEditedData] = useState({
     Inntektsgruppe: items.Inntektsgruppe || "",
     gbd: items.gbd || "",
   });
-  
-
-  const getLand = async () => {
-    const land = localStorage.getItem("userInput")
-    const docRef = doc(db, "Land", land)
-    const docSnap = await getDoc(docRef)
-    setItems(docSnap.data());
-    
-
-    if(docSnap.data().N < 1000) {
-      setMsg("NB! Bruker GBD data pga lite data fra landet")
-    }
-  };
+  const land = localStorage.getItem("userInput")
   
   useEffect(() => {
+    const getLand = async () => {
+      const docRef = doc(db, "Land", land)
+      const docSnap = await getDoc(docRef)
+      setItems(docSnap.data());
+      
+  
+      if(docSnap.data().N < 1000) {
+        setMsg("NB! Bruker GBD data pga lite data fra landet")
+      }
+
+      const data = await getDocs(collection(db, "Land"));
+      setItems2(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+     
+    };
+  
     getLand();
   }, []);
+
  
   const handleEditClick = () => {
     if (user && user.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2") {
@@ -110,7 +117,7 @@ const Land = () => {
       )}
       <h3 className="risikoScore">risiko score: </h3>
       
-        <p className="risikoScoreTekst">{items.risiko_score}</p>
+        <p className="risikoScoreTekst">{riskScoreCalc(land, items2)}</p>
       
       {user && user.uid === 'PEBh74M2IeSVfpey2C4iIsXuifu2' ? (
         isEditing ? (
