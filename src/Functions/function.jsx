@@ -1,7 +1,7 @@
 import { Outlet, Navigate } from 'react-router-dom'
 import { auth } from "../config/firebase-config"
 import React, { useEffect, useState } from "react";
-import { collection, onSnapshot, getDocs, getDoc } from "firebase/firestore"; 
+import { collection, onSnapshot, getDocs, getDoc, doc } from "firebase/firestore"; 
 import { db } from "../config/firebase-config"
 
 
@@ -42,7 +42,7 @@ export const getCollectionIds = async (collectionName) => {
     return ids;
   };
 
-export const getNorgeData = async () => {
+export async function getNorgeData()  {
     const land = "Norge"
     const docRef = doc(db, "Land", land)
     const docSnap = await getDoc(docRef)
