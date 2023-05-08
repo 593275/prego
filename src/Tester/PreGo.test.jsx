@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Outlet, Navigate } from 'react-router-dom'
-import { auth } from "../config/firebase-config"
-import { collection, onSnapshot, getDocs, getDoc } from "firebase/firestore"; 
-import { db } from "../config/firebase-config"
+
 import { riskScoreCalc, getNorgeData, sum } from "../Functions/function";
 import { describe, expect, it } from "vitest"; 
 import { landListe } from "./testData";

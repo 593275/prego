@@ -120,7 +120,7 @@ function Tester() {
     <div className="App">
       <h1>PreGO Graf</h1>
       <Navbar/>
-      <div style={{ width: '50%', margin: '0 auto', textAlign: 'center' }}>
+      <div style={{ width: '50%', margin: '0 auto', textAlign: 'center', position: "top"}}>
         <Bar data={data} options={options} />
       </div>
     </div>
