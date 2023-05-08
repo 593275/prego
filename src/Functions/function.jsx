@@ -53,7 +53,7 @@ export async function getNorgeData()  {
 export function riskScoreCalc ( land, landListe )  {
   // Sorterer etter forskjellige varibaler
   const sortedListPct_sb = [...landListe].sort((a, b) => a.pct_sb - b.pct_sb);
-  console.log(sortedListPct_sb)
+ 
   const sortedListPct_lbw = [...landListe].sort((a, b) => a.pct_lbw - b.pct_lbw);
   const sortedListPct_pet = [...landListe].sort((a, b) => a.pct_pet - b.pct_pet);
   const sortedListPct_gdm = [...landListe].sort((a, b) => a.pct_gdm - b.pct_gdm);
