@@ -61,7 +61,7 @@ const Land = () => {
   const handleSaveClick = async () => {
     const docRef = doc(db, "Land", localStorage.getItem("userInput"));
     await updateDoc(docRef, editedData);
-    getLand();
+   
     setIsEditing(false);
   };
 

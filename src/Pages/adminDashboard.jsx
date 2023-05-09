@@ -13,7 +13,7 @@ import SearchBar from "./Dashboard";
       delimiter: ";",
       complete: async (results) => {
         const items = results.data.slice(1)
-        .filter((item) => item.length === 16) 
+        .filter((item) => item.length === 15) 
         .map((item) => {
           return {
             ctry: item[0],
@@ -30,8 +30,7 @@ import SearchBar from "./Dashboard";
             pct_cs: parseFloat(item[11].replace(",", ".")),
             n_fa: parseInt(item[12]),
             pct_fa: parseFloat(item[13].replace(",", ".")),
-            gbd: item[14],
-            risiko_score: parseFloat(item[15].replace(",", "."))
+            gbd: item[14]
           };
         });
         for (const item of items) {
@@ -58,7 +57,6 @@ import SearchBar from "./Dashboard";
               n_fa: item.n_fa,
               pct_fa: item.pct_fa,
               gbd: item.gbd,
-              risiko_score: item.risiko_score.toFixed(2),
             })
 
             setError1("Et eller flere land i filen ekstisterer allerede i databasen og vil bli oppdatert")
@@ -79,7 +77,6 @@ import SearchBar from "./Dashboard";
               n_fa: item.n_fa,
               pct_fa: item.pct_fa,
               gbd: item.gbd,
-              risikoscore: item.risiko_score.toFixed(2),
             });
             
           }

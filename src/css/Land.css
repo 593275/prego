@@ -4,11 +4,15 @@ div {
   }
   
   .Land {
-    display: block;
-    transform: translate(-11.8%);
+    
+    margin: 0 auto; 
+    width: 10vw;
+    text-align: right;
+    
   }
   
   .Inntektsgruppe {
+    
     display: block;
     border-bottom: 1px solid #ccc;
     width: 31.5%;
@@ -126,11 +130,12 @@ div {
   }
 
   #msg {
+    
     width: 17vw;
     height: 1.7vh;
     margin: 0 auto;
     color: red;
-    transform: translate(10%, -230%);
+    transform: translate(10%, -160%);
   }
 
 
