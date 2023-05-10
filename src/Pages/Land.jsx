@@ -19,7 +19,6 @@ const Land = () => {
   const [items2, setItems2] = useState([])
   const [isEditing, setIsEditing] = useState(false);
   const [msg, setMsg] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
   const [editedData, setEditedData] = useState({
     Inntektsgruppe: items.Inntektsgruppe || "",
     gbd: items.gbd || "",
@@ -132,10 +131,9 @@ const Land = () => {
         </>
   )
 ) : null}
-
-      <Circles calssName="sirkler"/>
-      <Navbar />
       <Tester />
+      <Circles className="sirkler"/>
+      <Navbar />
     </div>
   );
 };

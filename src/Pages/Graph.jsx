@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
 import { collection, query, doc, getDoc, updateDoc, deleteDoc, where , getDocs} from "firebase/firestore";
 import { db } from "../config/firebase-config"
+import "../css/Graph.css"
 
 import {
   Chart as ChartJS,
@@ -77,7 +78,7 @@ function Tester() {
 
 
   const data = {
-    labels: ['Stillbirth', 'Low birthweight', 'Preeclampsia', 'Gestational diabetes', 'Cesarean section', 'Folic acid'],
+    labels: ['', '', '', '', '', ''],
     datasets: [
       {
         label: 'Norge',
@@ -118,9 +119,9 @@ function Tester() {
 
   return (
     <div className="App">
-      <h1>PreGO Graf</h1>
-      <Navbar/>
-      <div style={{ width: '50%', margin: '0 auto', textAlign: 'center', position: "top"}}>
+      
+      <div className="graf">
+        <h1>PreGO Graf</h1>
         <Bar data={data} options={options} />
       </div>
     </div>
