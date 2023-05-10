@@ -126,7 +126,7 @@ function Circles() {
 
   const drawCircles = (ctx) => {
     const radius = 20;
-    const padding = 90;
+    const padding = 112;
     const numbers = [landData?.pct_sb, landData?.pct_lbw, landData?.pct_pet, landData?.pct_gdm, landData?.pct_cs, landData?.pct_fa];
     const norgeNumbers = [norgeData?.pct_sb, norgeData?.pct_lbw, norgeData?.pct_pet, norgeData?.pct_gdm, norgeData?.pct_cs, norgeData?.pct_fa];
     const roundedNumbersNorge = norgeNumbers.map(num => parseFloat(num?.toFixed(2)));
@@ -159,7 +159,7 @@ function Circles() {
           return "#008000";
         } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i]*1.5 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 <= num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -171,7 +171,7 @@ function Circles() {
           return "#008000";
         } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i]*1.5 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 <= num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -182,7 +182,7 @@ function Circles() {
           return "#008000";
         } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i]*1.5 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 <= num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -194,7 +194,7 @@ function Circles() {
           return "#008000";
         } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i]*1.5 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 <= num) {
           return "#FF0000";
         } else {
           return "#745194";
@@ -206,7 +206,7 @@ function Circles() {
           return "#FF0000";
         } else if (num > roundedNumbersNorge[i]*0.5 && roundedNumbersNorge[i]*1.5 > num) {
           return "#ffff00";
-        } else if(roundedNumbersNorge[i]*1.5 < num) {
+        } else if(roundedNumbersNorge[i]*1.5 <= num) {
           return "#008000";
           
         } else {
@@ -255,7 +255,7 @@ function Circles() {
 
   return (
     <>
-      <canvas id="canvas" ref={canvasRef} width={800} height={200} />
+      <canvas id="canvas" ref={canvasRef} width={1000} height={200} />
       {selectedCircle !== null && (
         <div className="modal">
         <div className="modal-content">
