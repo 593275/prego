@@ -1,7 +1,7 @@
 .graf {
     margin: 0 auto;
-    transform: translate(25vw, -25vh);
-    position: absolute;
+    transform: translate(0vw, -25vh);
+    position: static;
     height: 50vh;
     width: 50vw;
 }

@@ -221,7 +221,7 @@ function Circles() {
 
   return (
     <>
-      <canvas id="canvas" ref={canvasRef} width={"1100px"} height={"200px"} />
+      <canvas id="canvas" ref={canvasRef} width={"1100vw"} height={"200vh"} />
       {selectedCircle !== null && (
         <div className="modal">
         <div className="modal-content">
