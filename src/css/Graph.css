@@ -1,5 +1,6 @@
 .graf {
-    width: 50%;
     margin: 0 auto;
-    transform: translate(0vw, -25vh);
+    transform: translate(25vw, -25vh);
+    position: absolute;
+    
 }
