@@ -85,14 +85,15 @@ div {
   }
 
   .risikoScoreTekst {
+   
     font-family: Arial, sans-serif;
     display: block;
     overflow: auto;
     margin: 0 auto; 
-    width: 2vw;
+    width: 20vw;
     height: 2vh;
     text-align: right;
-    transform: translate(14.3vw, -30.1vh);
+    transform: translate(5.5vw, -30.1vh);
   }
 
   .EditButton {

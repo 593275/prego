@@ -10,12 +10,8 @@ export default defineConfig({
     assetsDir: 'assets',
     minify: 'esbuild',
     sourcemap: true,
-    rollupOptions: {
-      // ...
-    },
-    babel: {
-      async: true, // add this line
-    },
+   
+  
   },
   
 })

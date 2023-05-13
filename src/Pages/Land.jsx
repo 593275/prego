@@ -7,7 +7,7 @@ import Circles from "./sirkerlTester";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import Tester from "./Graph";
-import { riskScoreCalc } from "../Utils/function";
+import { riskScoreCalc, riskScoreRang } from "../Utils/function";
 
 
 
@@ -18,7 +18,7 @@ const Land = () => {
   const [items, setItems] = useState([])
   const [items2, setItems2] = useState([])
   const [isEditing, setIsEditing] = useState(false);
-  const [msg, setMsg] = useState('');
+  const [msg, setMsg] = useState(" ");
   const [editedData, setEditedData] = useState({
     Inntektsgruppe: items.Inntektsgruppe || "",
     gbd: items.gbd || "",
@@ -44,7 +44,17 @@ const Land = () => {
     getLand();
   }, []);
 
- 
+function riskMsg  ()  {
+  if(items2.N >= 1000) {
+    const riskScore = riskScoreCalc(land, items2)
+    const rang = riskScoreRang(land, items2)
+    const length = items2.length
+    return riskScore +" rangert som " + rang +" av " +length+" i Norge"
+  } else {
+    return"Ikke nok data"
+  }
+}
+  
   const handleEditClick = () => {
     if (user && user.uid === "PEBh74M2IeSVfpey2C4iIsXuifu2") {
       setIsEditing(true);
@@ -114,9 +124,9 @@ const Land = () => {
       ) : (
         <p className="LandGbdTekst">{items.gbd}</p>
       )}
-      <h3 className="risikoScore">risiko score: </h3>
+      <h3 className="risikoScore">Risiko score: </h3>
       
-        <p className="risikoScoreTekst">{riskScoreCalc(land, items2)}</p>
+        <p className="risikoScoreTekst">{riskMsg()}</p>
       
       {user && user.uid === 'PEBh74M2IeSVfpey2C4iIsXuifu2' ? (
         isEditing ? (

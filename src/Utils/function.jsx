@@ -71,9 +71,27 @@ export function riskScoreCalc ( land, landListe )  {
   const indexPct_gdm = sortedListPct_gdm.findIndex((obj) => obj.ctry === land)+1;
   const indexPct_cs = sortedListPct_cs.findIndex((obj) => obj.ctry === land)+1;
   const indexPct_fa = sortedListPct_fa.findIndex((obj) => obj.ctry === land)+1;
-  console.log(indexPct_sb + " " + indexPct_lbw + " " + indexPct_pet + " " + indexPct_gdm + " " + indexPct_cs + " " + indexPct_fa )
+  
 
   return indexPct_sb*12 + indexPct_lbw*3 + indexPct_pet*4 + indexPct_gdm*2 + indexPct_cs*2 + indexPct_fa;
+}
+
+export function riskScoreRang(land, landListe) {
+  
+  let array = []
+  for(let i = 0; i < landListe.length; i++) {
+    let CalcLand = landListe[i].ctry
+    let riskCalc = riskScoreCalc(CalcLand, landListe)
+    let arrObj = {
+      riskScore: riskCalc,
+      land: CalcLand 
+    }
+    array.push(arrObj)
+  }
+  const sortedListScore = [...array].sort((a, b) => b.riskScore - a.riskScore);
+  const getIndex = sortedListScore.findIndex(item => item.land === land);
+  return getIndex+1
+  
 }
 
 export const sum = (a, b) => {

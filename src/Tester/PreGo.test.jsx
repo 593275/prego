@@ -1,5 +1,5 @@
 
-import { riskScoreCalc, getNorgeData, sum, getLandData } from "../Utils/function";
+import { riskScoreCalc, getNorgeData, sum, getLandData, riskScoreRang } from "../Utils/function";
 import { describe, expect, it } from "vitest"; 
 import { landListe } from "./testData";
 
@@ -32,6 +32,17 @@ describe("PreGoTest", async () => {
         expect(result1.pct_cs).toBe(latveriaPlussGBD)
 
 
+    })
+
+    it("Kan rangere etter risiko score og angi riktig plassering ", async () => {
+        const result1 = riskScoreRang("Norge", landListe)
+        expect(result1).toBe(2)
+        const result2 = riskScoreRang("Etiopia", landListe)
+        expect(result2).toBe(1)
+        const result3 = riskScoreRang("Sri-Lanka", landListe)
+        expect(result3).toBe(3)
+        const result4 = riskScoreRang("India", landListe)
+        expect(result4).toBe(4)
     })
 
 })
