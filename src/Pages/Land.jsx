@@ -45,7 +45,7 @@ const Land = () => {
   }, []);
 
 function riskMsg  ()  {
-  if(items2.N >= 1000) {
+  if(items.N >= 1000) {
     const riskScore = riskScoreCalc(land, items2)
     const rang = riskScoreRang(land, items2)
     const length = items2.length

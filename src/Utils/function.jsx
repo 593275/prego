@@ -15,7 +15,6 @@ export async function getNorgeData()  {
 export async function getLandData(userInput)  {
     const dataArray = [];
     const land = userInput
-    console.log(userInput)
     const docRef = doc(db, "Land", land)
     const docSnap = await getDoc(docRef)
     if(docSnap.data().N < 1000) {

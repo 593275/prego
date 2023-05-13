@@ -47,7 +47,7 @@ function Tester() {
     
   }, []);
 
-console.log(landGbd)
+
   
 
   if(typeof landGbd !== 'undefined') {
