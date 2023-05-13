@@ -1,7 +1,7 @@
 .circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -13,6 +13,7 @@
   transform:translate(-11.5vw);
 
   }
+
 
   .circle.active {
     border: 2px solid #000;
@@ -33,16 +34,28 @@
   }
 
   #tekst {
-
+    
+    font-family: Arial, sans-serif;
     text-align: left;
-    margin-left: 700px;
-    transform:translate(0,0vw);
+    margin: 0 auto;
+    width: 50vw;
+    height: 10vh;
+    transform:translate(20vw,-5vh);
 
+  }
+
+  #question{
+    transform:translate(-30vw,4vw);
+  }
+
+  #sirkler{
+    transform:translate(-6vw,0vw);
   }
 
 
   #description {
     color:cadetblue;
+    transform:translate(-30vw,4vw);
   }
 
   #tekststyle {

@@ -1,0 +1,19 @@
+.contact-section{
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+
+.video-section{
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+
+.intro-section {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+
+.video {
+    width: 50vw;
+    height: 50vh;
+}

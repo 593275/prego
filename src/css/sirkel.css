@@ -2,7 +2,7 @@
     position:static;
     margin:auto;
     transform: translate(2vw, -32vh);
-    font-family: Arial, sans-serif;
+    
     
 }
 
@@ -23,7 +23,7 @@
     position: relative;
     background-color: #fefefe;
     margin: auto;
-    padding: 100px;
+    padding: 150px;
     border: 1px solid #888;
     width: 80%;
     max-width: 600px;
