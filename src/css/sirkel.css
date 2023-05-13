@@ -1,7 +1,7 @@
 #canvas {
-    position:absolute;
+    position:static;
     margin:auto;
-    transform: translate(-26vw, 20vh);
+    transform: translate(2vw, 20vh);
     font-family: Arial, sans-serif;
     
 }
