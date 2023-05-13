@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { PrivateRoutes, AdminRoutes } from './Functions/function';
+import { PrivateRoutes, AdminRoutes } from './Utils/Routes';
 import Login from './Pages/LoginForm';
 import Dashboard from './Pages/Dashboard';
 import OmPreGO from "./Pages/OmPreGO";

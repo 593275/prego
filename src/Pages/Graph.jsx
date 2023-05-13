@@ -1,10 +1,10 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
 import { collection, query, doc, getDoc, updateDoc, deleteDoc, where , getDocs} from "firebase/firestore";
 import { db } from "../config/firebase-config"
 import "../css/Graph.css"
+import { getNorgeData, getLandData } from '../Utils/function';
 
 import {
   Chart as ChartJS,
@@ -21,63 +21,38 @@ function Tester() {
 
   const [items, setItems] = useState([])
   const [items2, setItems2] = useState([])
-  const dataArray = []
-
-  useEffect(() => {
-    const getLandData = async () => {
-      const land = localStorage.getItem("userInput")
-      const docRef = doc(db, "Land", land)
-      const docSnap = await getDoc(docRef)
-      if(docSnap.data().N < 1000) {
-        const landRef = collection(db, "Land");
-        const queryGBD = query(landRef, where("gbd", "==", docSnap.data().gbd))
-        const querySnapshot = await getDocs(queryGBD)
-
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          dataArray.push(data);
-        });
-
-        const totalN = dataArray.reduce((acc, cur) => acc + cur.N, 0);
-        const totalN_sb = dataArray.reduce((acc, cur) => acc + cur.n_sb, 0);
-        const totalN_lbw = dataArray.reduce((acc, cur) => acc + cur.n_lbw, 0);
-        const totalN_pet = dataArray.reduce((acc, cur) => acc + cur.n_pet, 0);
-        const totalN_gdm = dataArray.reduce((acc, cur) => acc + cur.n_gdm, 0);
-        const totalN_cs = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
-        const totalN_fa = dataArray.reduce((acc, cur) => acc + cur.n_fa, 0);
-
-        const dataGBD = {
-          pct_sb: (totalN_sb / totalN)*100,
-          pct_lbw: (totalN_lbw / totalN)*100,
-          pct_pet: (totalN_pet / totalN)*100,
-          pct_gdm: (totalN_gdm / totalN)*100,
-          pct_cs: (totalN_cs / totalN)*100,
-          pct_fa: (totalN_fa / totalN)*100
-        }
-
-        setItems2(dataGBD)
-     
-
-      } else {
-        setItems2(docSnap.data());
-      }
-    };
-
-    const getNorgeData = async () => {
-      const land = "Norge"
-      const docRef = doc(db, "Land", land)
-      const docSnap = await getDoc(docRef)
-      setItems(docSnap.data());
-    };
-
-    getNorgeData();
-    getLandData();
-  }, []);
-
+  const [landGbd, setlandGBD] = useState("")
+  let data = "";
   
 
+  useEffect(() => {
+  const henteData = async () => {
+    const userInput = localStorage.getItem("userInput")
+    const userLand = await getLandData(userInput)
+    setItems2(userLand);
 
-  const data = {
+    if (userLand.N < 1000) {
+      setlandGBD(userLand.gbd);
+    } else {
+      setlandGBD(userLand.ctry);
+    }
+    
+
+    const getNorge =  await getNorgeData()
+    setItems(getNorge)
+  }
+  
+  henteData()
+
+    
+  }, []);
+
+console.log(landGbd)
+  
+
+  if(typeof landGbd !== 'undefined') {
+    
+   data = {
     labels: ['', '', '', '', '', ''],
     datasets: [
       {
@@ -96,7 +71,7 @@ function Tester() {
         borderWidth: 1,
       },
       {
-        label: [localStorage.getItem("userInput")],
+        label: [landGbd],
         data: [
           //toFixed(1) fungerer ikke med databasen
           Math.round(parseFloat(items2.pct_sb) * 10) / 10,
@@ -112,7 +87,7 @@ function Tester() {
       },
     ]
   };
-  
+}
   
 
   const options = {};
@@ -120,7 +95,7 @@ function Tester() {
   return (
     <div className="App">
       
-      <div className="graf">
+      <div className="graf" width= {50}>
         <h1>PreGO Graf</h1>
         <Bar data={data} options={options} />
       </div>

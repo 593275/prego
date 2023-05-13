@@ -7,7 +7,7 @@ import Circles from "./sirkerlTester";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import Tester from "./Graph";
-import { riskScoreCalc } from "../Functions/function";
+import { riskScoreCalc } from "../Utils/function";
 
 
 
@@ -89,7 +89,7 @@ const Land = () => {
 
   return (
     <div>
-      <h2 className="Land">{items.ctry}</h2> <p id ="msg">{msg}</p>
+      <h1 className="Land">{items.ctry}</h1> <p id ="msg">{msg}</p>
       <h3 className="Inntektsgruppe">Inntektsgruppe:</h3>
       {isEditing ? (
         <input id="InntektsgruppeEdit"
@@ -132,7 +132,7 @@ const Land = () => {
   )
 ) : null}
       <Tester />
-      <Circles className="sirkler"/>
+      <Circles/>
       <Navbar />
     </div>
   );

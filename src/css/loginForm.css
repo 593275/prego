@@ -8,6 +8,8 @@
   #labelLogin {
     margin-bottom: 0.5rem;
     font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
   }
   
   #inputLogin {

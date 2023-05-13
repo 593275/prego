@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, query, doc, getDocs } from "firebase/firestore"; 
 
 const SearchBar =  () => {
-  let land = "";
+  let land = ""
   const navigate = useNavigate();
   let filteredItems = ""
   const landCollectionRef = collection(db, "Land");
@@ -28,7 +28,7 @@ const SearchBar =  () => {
 
 
   if (isLoading === false) {
-    console.log(items)
+    
     filteredItems = items.filter((item) =>
     item.ctry.toLowerCase().includes(query.toLowerCase()));
     
@@ -53,7 +53,6 @@ const SearchBar =  () => {
     if (e.key === "Enter") {
       land = query
       localStorage.setItem('userInput', query);
-      console.log(land)
       navigate("/Land")
     }
 
@@ -67,7 +66,7 @@ const SearchBar =  () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyPress}
-          placeholder="Search for items..."
+          placeholder="Søk etter land"
         />
         <ul>
           {filteredItems && filteredItems.slice(0, 5).map((item) => (

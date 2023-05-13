@@ -17,14 +17,13 @@ import {
 
 function LineChart(label) {
     const risiko =label.label
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState("Ikke nok data")
     const [items2, setItems2] = useState([])
     const [items3, setItems3] = useState([])
     const yearArray = [2001,2005,2009,2013,2017,2021];
     let data = ""
 
-    console.log(risiko)
-    console.log("hei")
+  
   
     useEffect(() => {
 
@@ -37,7 +36,7 @@ function LineChart(label) {
           const docSnap = await getDoc(docRef)
           landAar[index] = (docSnap.data());
       }
-  
+      
       const riktigRisiko = landAar.map(item => item[risiko])
       setItems3(riktigRisiko)
       
@@ -52,9 +51,14 @@ function LineChart(label) {
           const docSnap = await getDoc(docRef)
           landAar2[index] = (docSnap.data());
       }
-
-      const riktigRisiko = landAar2.map(item => item[risiko])
-      setItems2(riktigRisiko)
+      if(landAar2[0] !=='undefined') {
+        const riktigRisiko = landAar2.map(item => item[risiko]);
+        setItems2(riktigRisiko)
+        setItems(land)
+      } else {
+        setItems("Ikke nok data")
+      }
+    
 
       };
   
@@ -77,7 +81,7 @@ function LineChart(label) {
           borderWidth: 1,
         },
         {
-          label: [localStorage.getItem("userInput")],
+          label: [items],
           data: [items2[0], items2[1], items2[2], items2[3], items2[4], items2[5]],
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
@@ -91,7 +95,7 @@ function LineChart(label) {
   
     return (
         
-      <div style={{ width: '50%', margin: '0 auto', textAlign: 'center' }}>
+      <div style={{ width: '100%', margin: '0 auto', textAlign: 'center' }}>
         <Navbar />
         <Line data ={data} options = {options}></Line>
       </div>

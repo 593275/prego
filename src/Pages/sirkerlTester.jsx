@@ -3,6 +3,7 @@ import { collection, query, doc, getDoc, where, getDocs } from "firebase/firesto
 import { db } from "../config/firebase-config" 
 import "../css/sirkel.css"
 import LineChart from './LineChart';
+import { getLandData, getNorgeData } from '../Utils/function';
 
 function Circles() {
   const canvasRef = useRef(null);
@@ -24,54 +25,19 @@ function Circles() {
   };
 
   useEffect(() => {
-    const getLandData = async () => {
-      const land = localStorage.getItem("userInput")
-      const docRef = doc(db, "Land", land)
-      const docSnap = await getDoc(docRef)
-      if(docSnap.data().N < 1000) {
-        const landRef = collection(db, "Land");
-        const queryGBD = query(landRef, where("gbd", "==", docSnap.data().gbd))
-        const querySnapshot = await getDocs(queryGBD)
+   
+    const userLand = getLandData(localStorage.getItem("userInput"))
+    userLand.then(result => {
+      setLandData(result)
+    })
 
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          dataArray.push(data);
-        });
-
-        const totalN = dataArray.reduce((acc, cur) => acc + cur.N, 0);
-        const totalN_sb = dataArray.reduce((acc, cur) => acc + cur.n_sb, 0);
-        const totalN_lbw = dataArray.reduce((acc, cur) => acc + cur.n_lbw, 0);
-        const totalN_pet = dataArray.reduce((acc, cur) => acc + cur.n_pet, 0);
-        const totalN_gdm = dataArray.reduce((acc, cur) => acc + cur.n_gdm, 0);
-        const totalN_cs = dataArray.reduce((acc, cur) => acc + cur.n_cs, 0);
-        const totalN_fa = dataArray.reduce((acc, cur) => acc + cur.n_fa, 0);
-
-        const dataGBD = {
-          pct_sb: (totalN_sb / totalN)*100,
-          pct_lbw: (totalN_lbw / totalN)*100,
-          pct_pet: (totalN_pet / totalN)*100,
-          pct_gdm: (totalN_gdm / totalN)*100,
-          pct_cs: (totalN_cs / totalN)*100,
-          pct_fa: (totalN_fa / totalN)*100
-        }
-
-        setLandData(dataGBD)
-        console.log(landData)
-    
-      } else {
-        setLandData(docSnap.data());
-      }
-    };
-
-    const getNorgeData = async () => {
-      const land = "Norge"
-      const docRef = doc(db, "Land", land)
-      const docSnap = await getDoc(docRef)
-      setNorgeData(docSnap.data());
-    };
+    const Norge = getNorgeData()
+    Norge.then(result => {
+      setNorgeData(result)
+    })
     
     getNorgeData();
-    getLandData();
+   
   }, []);
 
   useEffect(() => {
@@ -100,12 +66,12 @@ function Circles() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0)';
     ctx.fill();
   
-    ctx.font = '14px Arial';
+    ctx.font = '16px Arial';
     ctx.fillStyle = '#000000';
     ctx.textAlign = 'center';
     ctx.fillText(label, x, y + radius + 20);
   
-    ctx.font = '12px Arial';
+    ctx.font = '15px Arial';
     ctx.fillStyle = '#000000';
     ctx.textAlign = 'center';
     ctx.fillText(String(number), x, y + radius + 35);
@@ -126,7 +92,7 @@ function Circles() {
 
   const drawCircles = (ctx) => {
     const radius = 20;
-    const padding = 112;
+    const padding = 115;
     const numbers = [landData?.pct_sb, landData?.pct_lbw, landData?.pct_pet, landData?.pct_gdm, landData?.pct_cs, landData?.pct_fa];
     const norgeNumbers = [norgeData?.pct_sb, norgeData?.pct_lbw, norgeData?.pct_pet, norgeData?.pct_gdm, norgeData?.pct_cs, norgeData?.pct_fa];
     const roundedNumbersNorge = norgeNumbers.map(num => parseFloat(num?.toFixed(2)));
@@ -255,7 +221,7 @@ function Circles() {
 
   return (
     <>
-      <canvas id="canvas" ref={canvasRef} width={1000} height={200} />
+      <canvas id="canvas" ref={canvasRef} width={"1100px"} height={"200px"} />
       {selectedCircle !== null && (
         <div className="modal">
         <div className="modal-content">

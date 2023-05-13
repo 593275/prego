@@ -1,8 +1,7 @@
 
-import { riskScoreCalc, getNorgeData, sum } from "../Functions/function";
+import { riskScoreCalc, getNorgeData, sum, getLandData } from "../Utils/function";
 import { describe, expect, it } from "vitest"; 
 import { landListe } from "./testData";
-
 
 describe("PreGoTest", async () => {
     it("tester", () => {
@@ -23,6 +22,16 @@ describe("PreGoTest", async () => {
     it("Kan hente data om Norge fra firebase firestore", async () => {
         const result =  await getNorgeData();
         expect(result.ctry).toBe("Norge")
+    })
+
+    it("Kan bruke GBD, ved mangel av data.", async () => {
+        const latveriaPlussGBD = (42863+20)/(90934+200)*100
+        const result = await getLandData("Etiopia")
+        expect(result.pct_cs).toBe(41.72230682)
+        const result1 = await getLandData("Latveria")
+        expect(result1.pct_cs).toBe(latveriaPlussGBD)
+
+
     })
 
 })
