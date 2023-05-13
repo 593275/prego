@@ -95,7 +95,7 @@ function Tester() {
   return (
     <div className="App">
       
-      <div className="graf">
+      <div className="graf" >
         <h1>PreGO Graf</h1>
         <Bar data={data} options={options} />
       </div>
