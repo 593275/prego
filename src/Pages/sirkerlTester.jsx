@@ -66,12 +66,12 @@ function Circles() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0)';
     ctx.fill();
   
-    ctx.font = '16px Arial';
+    ctx.font = ' 16px arial';
     ctx.fillStyle = '#000000';
     ctx.textAlign = 'center';
     ctx.fillText(label, x, y + radius + 20);
   
-    ctx.font = '15px Arial';
+    ctx.font = ' 15px serif';
     ctx.fillStyle = '#000000';
     ctx.textAlign = 'center';
     ctx.fillText(String(number), x, y + radius + 35);
