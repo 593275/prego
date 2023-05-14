@@ -17,7 +17,7 @@ const OmPreGO = () => {
           <h2>Instruksjonsvideo</h2>
           <iframe className="video"
             
-            src="https://www.youtube.com/embed/RbBAs683UD4"
+            src="https://www.youtube.com/embed/Ml5AJFxxfBU"
             title="Instruksjonsvideo"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
