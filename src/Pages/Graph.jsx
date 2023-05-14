@@ -90,14 +90,31 @@ function Tester() {
 }
   
 
-  const options = {};
+const options = {plugins: {
+   
+  legend: {
+    labels: {
+      font: {
+        size: 25 // Adjust the font size as per your requirement
+      }
+    }
+  },
+  tooltip: {   
+    bodyFont: {
+      size: 25 // Adjust the font size as per your requirement
+    }
+  }
+}
+}; 
 
   return (
-    <div className="App">
-      
+
+   
+    <div className="App">      
       <div className="graf" >
         <h1>PreGO Graf</h1>
         <Bar data={data} options={options} />
+
       </div>
     </div>
   );

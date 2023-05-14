@@ -75,14 +75,29 @@ function LineChart(label) {
       datasets: [
         {
           label: 'Norge',
-          data: [items3[0], items3[1], items3[2], items3[3], items3[4], items3[5]],
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          data: [
+            //toFixed(1) fungerer ikke med databasen
+            Math.round(parseFloat(items3[0]) * 10) / 10,
+            Math.round(parseFloat(items3[1]) * 10) / 10,
+            Math.round(parseFloat(items3[2]) * 10) / 10,
+            Math.round(parseFloat(items3[3]) * 10) / 10,
+            Math.round(parseFloat(items3[4]) * 10) / 10,
+            Math.round(parseFloat(items3[5]) * 10) / 10
+          ],            backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1,
         },
         {
           label: [items],
-          data: [items2[0], items2[1], items2[2], items2[3], items2[4], items2[5]],
+          data: [
+            //toFixed(1) fungerer ikke med databasen
+            Math.round(parseFloat(items2[0]) * 10) / 10,
+            Math.round(parseFloat(items2[1]) * 10) / 10,
+            Math.round(parseFloat(items2[2]) * 10) / 10,
+            Math.round(parseFloat(items2[3]) * 10) / 10,
+            Math.round(parseFloat(items2[4]) * 10) / 10,
+            Math.round(parseFloat(items2[5]) * 10) / 10
+          ],          
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1,
@@ -91,11 +106,25 @@ function LineChart(label) {
     };
   }
   
-    const options = {};
-  
+  const options = {plugins: {
+   
+    legend: {
+      labels: {
+        font: {
+          size: 25 // Adjust the font size as per your requirement
+        }
+      }
+    },
+    tooltip: {   
+      bodyFont: {
+        size: 25 // Adjust the font size as per your requirement
+      }
+    }
+  }
+};  
     return (
         
-      <div style={{ width: '100%', margin: '0 auto', textAlign: 'center' }}>
+      <div style={{ width: '150%', margin: '0 auto', textAlign: 'center' }}>
         <Navbar />
         <Line data ={data} options = {options}></Line>
       </div>

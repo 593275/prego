@@ -221,13 +221,16 @@ function Circles() {
 
   return (
     <>
-      <canvas id="canvas" ref={canvasRef} width={"1100vw"} height={"200vh"} />
+      <canvas id="canvas" ref={canvasRef} width={"1100vw"} height={"200vh"} />    
       {selectedCircle !== null && (
         <div className="modal">
         <div className="modal-content">
           <span className="close" onClick={hideModal}>&times;</span>
+          <div class="text-container">
           <h2>{labels[selectedCircle]}</h2>
           <p3>Fakta om {labels[selectedCircle]}?</p3>
+           <p></p><br></br>         
+          </div>
           <LineChart label = {variables[selectedCircle]} />
         </div>
       </div>
