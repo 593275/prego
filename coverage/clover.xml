@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684014289007" clover="3.2.0">
-  <project timestamp="1684014289007" name="All files">
+<coverage generated="1684236822854" clover="3.2.0">
+  <project timestamp="1684236822854" name="All files">
     <metrics statements="179" coveredstatements="179" conditionals="35" coveredconditionals="35" methods="11" coveredmethods="11" elements="225" coveredelements="225" complexity="0" loc="179" ncloc="179" packages="3" files="3" classes="3"/>
     <package name="Tester">
       <metrics statements="58" coveredstatements="58" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="testData.jsx" path="C:\Users\William Pedersen\Desktop\Prego(ny)\prego\src\Tester\testData.jsx">
+      <file name="testData.jsx" path="D:\prego\src\Tester\testData.jsx">
         <metrics statements="58" coveredstatements="58" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -68,7 +68,7 @@
     </package>
     <package name="Utils">
       <metrics statements="98" coveredstatements="98" conditionals="34" coveredconditionals="34" methods="10" coveredmethods="10"/>
-      <file name="function.jsx" path="C:\Users\William Pedersen\Desktop\Prego(ny)\prego\src\Utils\function.jsx">
+      <file name="function.jsx" path="D:\prego\src\Utils\function.jsx">
         <metrics statements="98" coveredstatements="98" conditionals="34" coveredconditionals="34" methods="10" coveredmethods="10"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -172,7 +172,7 @@
     </package>
     <package name="config">
       <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="firebase-config.js" path="C:\Users\William Pedersen\Desktop\Prego(ny)\prego\src\config\firebase-config.js">
+      <file name="firebase-config.js" path="D:\prego\src\config\firebase-config.js">
         <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
