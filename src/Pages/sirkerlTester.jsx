@@ -11,10 +11,9 @@ function Circles() {
   const [selectedCircle, setSelectedCircle] = useState(null);
   const [landData, setLandData] = useState(null);
   const [norgeData, setNorgeData] = useState(null);
-  const tester = 1;
   const labels = ['Stillbirth', 'Low birthweight', 'Preeclampsia', 'Gestational diabetes', 'Cesarean section', 'Folic acid'];
   const variables = ['pct_sb', 'pct_lbw', 'pct_pet', 'pct_gdm', 'pct_cs', 'pct_fa']
-  const dataArray = [];
+  
 
   const showModal = (circleIndex) => {
     setSelectedCircle(circleIndex);

@@ -4,11 +4,11 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
 import "../css/Beskrivelse.css"
 
-//Getting data 
+ 
 function MyPage() {
 
 const [land, setLand] = useState([])
-
+//Getting data and displaying a variable form database called "beskrivelse" from user chosen country
 const getLand = async () => {
     const land = localStorage.getItem("userInput")
     const docRef = doc(db, "Land", land)

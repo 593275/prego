@@ -9,8 +9,8 @@ const Navbar = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   const valgtLand = localStorage.getItem("userInput")
-
   const navigate = useNavigate();
+  
 //Redirecting user to different pages depending on what the user selected or logging user out
   const handleClick = (event) => {
     const knapp = event.target.textContent;
