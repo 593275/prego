@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import "../css/omPreGo.css"
 
+//About PreGO! page where some information about the owner will be displayed and toturial on how to use the application
 const OmPreGO = () => {
   return (
     <div className="container">

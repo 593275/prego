@@ -8,12 +8,13 @@ import "../css/loginForm.css"
  * Bruker Hei123
  * admin PreGo123
  */
-
+//Login in site for users
 const LoginForm = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
 
   if(auth.currentUser != null) {
     signOut(auth).then(() => {
@@ -24,7 +25,7 @@ const LoginForm = () => {
   }
 
 
-
+    //Handle log in by user with verification by Firebase Auth and redirecting user to corrosponding site
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {

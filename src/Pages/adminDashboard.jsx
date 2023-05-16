@@ -4,6 +4,7 @@ import { db } from "../config/firebase-config"
 import { setDoc, updateDoc, doc, getDoc } from "firebase/firestore"; 
 import SearchBar from "./Dashboard";
 
+//Code for CSV file upload to Firetore database for the general CSV file
  function App() {
   const [error1, setError1] = useState('');
   const handleFileUploadGenerell =  async (e) => {
@@ -33,9 +34,7 @@ import SearchBar from "./Dashboard";
             gbd: item[14]
           };
         });
-        for (const item of items) {
-          console.log(item)
-        }
+        
         for (const item of items) {
           const docRef = doc(db, "Land", item.ctry)
           const docSnap = await getDoc(docRef)
@@ -89,6 +88,7 @@ import SearchBar from "./Dashboard";
 
   };
 
+  //Code for CSV file upload to Firetore database for yearly CSV file
   const handleFileUploadPerAar =  async (e) => {
     const file = e.target.files[0];
     Papa.parse(file, {

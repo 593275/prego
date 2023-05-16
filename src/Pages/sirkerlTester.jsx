@@ -5,6 +5,7 @@ import "../css/sirkel.css"
 import LineChart from './LineChart';
 import { getLandData, getNorgeData } from '../Utils/function';
 
+//Code for dispaly of the risk factor circles and modalbox with linecharts
 function Circles() {
   const canvasRef = useRef(null);
   const [selectedCircle, setSelectedCircle] = useState(null);
@@ -24,6 +25,7 @@ function Circles() {
     setSelectedCircle(null);
   };
 
+  //Fetching data to be used for risk circles
   useEffect(() => {
    
     const userLand = getLandData(localStorage.getItem("userInput"))
@@ -54,6 +56,7 @@ function Circles() {
     }
   }, [landData, norgeData]);
 
+  //Making a invisible button over the risk circles
   const drawCircle = (ctx, x, y, radius, color, label, number, index) => {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
@@ -89,7 +92,7 @@ function Circles() {
     });
   };
   
-
+//Setting risk circles with color logic to be drawn
   const drawCircles = (ctx) => {
     const radius = 20;
     const padding = 115;
@@ -206,7 +209,7 @@ function Circles() {
   
   
   
-
+  
   useEffect(() => {
     // Draw circles on canvas once the canvas element is mounted
     const canvas = canvasRef.current;

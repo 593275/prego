@@ -3,7 +3,7 @@ import '../css/Navbar.css';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase-config';
 import { getAuth } from "firebase/auth";
-
+//Navbar logic
 const Navbar = () => {
 
   const auth = getAuth();
@@ -11,7 +11,7 @@ const Navbar = () => {
   const valgtLand = localStorage.getItem("userInput")
 
   const navigate = useNavigate();
-
+//Redirecting user to different pages depending on what the user selected or logging user out
   const handleClick = (event) => {
     const knapp = event.target.textContent;
     if(knapp === "Fødeland") {

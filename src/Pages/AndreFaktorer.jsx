@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import "../css/Andrefaktorer.css";
 
-
+//logic for selecting a colorball and calculating the "average" color
 const AndreFaktorer = () => {
   const [responses, setResponses] = useState([]);
 

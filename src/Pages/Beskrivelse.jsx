@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import { collection, query, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config" 
 import "../css/Beskrivelse.css"
 
-useEffect
-
+//Getting data 
 function MyPage() {
 
-const [items, setItems] = useState([])
+const [land, setLand] = useState([])
 
 const getLand = async () => {
     const land = localStorage.getItem("userInput")
     const docRef = doc(db, "Land", land)
     const docSnap = await getDoc(docRef)
-    setItems(docSnap.data());
+    setLand(docSnap.data());
     
   };
   
@@ -24,8 +23,8 @@ const getLand = async () => {
 
   return (
     <div>
-      <h1 className="Land">{items.ctry}</h1>
-      <p className="Beskrivelse">{items.beskrivelse}</p>
+      <h1 className="Land">{land.ctry}</h1>
+      <p className="Beskrivelse">{land.beskrivelse}</p>
       <Navbar/>
     </div>
   );

@@ -2,6 +2,7 @@ import { Outlet, Navigate } from 'react-router-dom'
 import React from "react";
 import { auth } from "../config/firebase-config"
 
+//Diffrent constraints on routes 
 export const PrivateRoutes = () => {
     const user = auth.currentUser;
     return(

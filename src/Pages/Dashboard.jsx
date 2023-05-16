@@ -5,6 +5,7 @@ import { db } from "../config/firebase-config"
 import { useNavigate } from 'react-router-dom';
 import { collection, query, doc, getDocs } from "firebase/firestore"; 
 
+//Logic for the searchbar
 const SearchBar =  () => {
   let land = ""
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const SearchBar =  () => {
   const [items, setItems] = useState([])
   const [isLoading, setIsLoading] = useState(true);
  
-
+//Fetching all the countries in the database 
   useEffect(() => {
     const getLand = async () => {
       const data = await getDocs(landCollectionRef);
@@ -26,7 +27,7 @@ const SearchBar =  () => {
   }, []);
 
 
-
+//Waiting for the the countries to be fetched from database 
   if (isLoading === false) {
     
     filteredItems = items.filter((item) =>
@@ -44,11 +45,12 @@ const SearchBar =  () => {
   }
     
 
-
+//Handling click event where user select a country 
   const handleItemClick = (item) => {
     setQuery(item);
   };
 
+//Navigating user to selected country 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       land = query

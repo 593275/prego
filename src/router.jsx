@@ -9,6 +9,7 @@ import Land from './Pages/Land';
 import Tester from './Pages/Beskrivelse';
 import LineChart from "./Pages/LineChart";
 
+//Setting the pages in diffrent routes depending on which users can access the page
   const App = () =>  {
     return (
       <div className="App">
