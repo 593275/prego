@@ -98,13 +98,13 @@ div {
 
   .EditButton {
     position: absolute;
-    top: 47.2vh;
+    top: 20.2vh;
     left: 65vw;
   }
 
   .DeleteButton {
     position: absolute;
-    top: 47.2%;
+    top: 20.2%;
     left: 63vw;
   }
 
@@ -120,13 +120,13 @@ div {
   
   .saveButton {
     position: absolute;
-    top: 49vh;
+    top: 20.2vh;
     left: 63vw;
   }
 
   .cancelButton {
     position: absolute;
-    top: 49vh;
+    top: 20.2vh;
     left: 65.4vw;
   }
 

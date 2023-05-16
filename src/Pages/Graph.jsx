@@ -1,8 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import { useState, useEffect } from "react";
-import { collection, query, doc, getDoc, updateDoc, deleteDoc, where , getDocs} from "firebase/firestore";
-import { db } from "../config/firebase-config"
 import "../css/Graph.css"
 import { getNorgeData, getLandData } from '../Utils/function';
 
@@ -15,8 +13,10 @@ import {
   Legend,
 } from "chart.js";
 
+//Code for the main chart 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
+//Code for the main chart 
 function Tester() {
 
   const [items, setItems] = useState([])
@@ -24,7 +24,7 @@ function Tester() {
   const [landGbd, setlandGBD] = useState("")
   let data = "";
   
-
+//Fetching data from database to be used for the graph
   useEffect(() => {
   const henteData = async () => {
     const userInput = localStorage.getItem("userInput")
@@ -49,7 +49,7 @@ function Tester() {
 
 
   
-
+  //Dispalying the data in form of a graph
   if(typeof landGbd !== 'undefined') {
     
    data = {
