@@ -10,6 +10,6 @@ Vanlig bruker info:
 Brukernavn: bruker,
 Passord: Hei123
 
-NB! Koden har skalerer dårlig etter skjrmoppløsning, zoom inn og ut for bedre presentasjon av funksjonene om det skulle være et problem
+NB! Koden har skalerer dårlig etter skjrmoppløsning, zoom inn og ut for bedre presentasjon av funksjonene om det skulle være et problem. Koblingen til databasen vil bli lagt ned etterhvert for å unngå potensielle fremtidige kostnader fra firebase.
 
 
